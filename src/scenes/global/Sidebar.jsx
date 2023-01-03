@@ -218,6 +218,13 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+            <Item
+              title="Word Text"
+              to="/Words"
+              icon={<TimelineOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              />
           </Box>
         </Menu>
       </ProSidebar>
