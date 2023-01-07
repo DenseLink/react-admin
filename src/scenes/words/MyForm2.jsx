@@ -6,8 +6,8 @@ import parse from 'html-react-parser';
 function MyForm2() {
     const [text, setText] = useState('')
   return (
-        <div className="App">
-            <div className="editor">
+    <div className="App" style={{display: "flex", flexDirection: "column", height: "100vh"}}>
+            <div id="editor">
                 <CKEditor
                 editor={ClassicEditor}
                 data={text}
@@ -15,9 +15,9 @@ function MyForm2() {
                     const data = editor.getData()
                     setText(data)
                 }}
+                style={{flexGrow: 1}}
                 />
-            </div>
-            <div>
+            
                 <h2>Content</h2>
                 <p>{parse(text)}</p>
             </div>
