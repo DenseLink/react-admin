@@ -16,9 +16,9 @@ export function SortableItem(props) {
         transform: CSS.Transform.toString(transform),
         transition
     }
-
+   
     return (
-        <div ref={setNodeRef} stype={style} {...attributes} {...listeners}>
+        <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
             <Card body className="m-3"> {props.id}</Card>
         </div>
     )
