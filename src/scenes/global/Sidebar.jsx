@@ -16,6 +16,11 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import { SortableItem } from "./SortableItem";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -40,8 +45,24 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
-
+  const [ languages, setLanguages ] = useState(["J", "P", "T"]);
   return (
+    <div>
+    <DndContext
+      collisionDetection={closestCenter}
+      onDragEnd={handleDragEnd}
+    >
+      <Container className="p-3" style={{"width": "50%"}} align="center">
+        <h3>The best</h3>
+        <SortableContext
+          items={languages}
+          strategy={verticalListSortingStrategy}
+          >
+            {languages.map(language => <SortableItem key={language} id={language}/>)}
+          </SortableContext>
+      </Container>
+    </DndContext>
+    
     <Box
       sx={{
         "& .pro-sidebar-inner": {
@@ -229,7 +250,19 @@ const Sidebar = () => {
         </Menu>
       </ProSidebar>
     </Box>
+    </div>
   );
+    function handleDragEnd(event) {
+      const {active, over} = event;
+      if(active.id !== over.id){
+        setLanguages((items) => {
+          const activeIndex = items.indexOf(active.id);
+          const overIndex = items.indexOf(over.id);
+
+          return arrayMove(items, activeIndex, overIndex)
+        });
+      }
+    }
 };
 
 export default Sidebar;
