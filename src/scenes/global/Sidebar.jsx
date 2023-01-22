@@ -21,6 +21,7 @@ import Container from 'react-bootstrap/Container';
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { SortableItem } from "./SortableItem";
+import Draggable, {DraggableCore} from 'react-draggable';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -71,7 +72,12 @@ const Sidebar = () => {
          >
           {languages.map(language => <SortableItem key={language} id={language}/>)}
           </SortableContext>
+          </Container>
+          </DndContext>
+          
+      <Container className="p-3" style={{"width": "50%"}} align="center">
         {pages.map(({ title, to, icon }, index) => (
+          <Draggable>
           <MenuItem
             key={title}
             active={selected === title}
@@ -85,9 +91,10 @@ const Sidebar = () => {
             <Typography>{title}</Typography>
             <Link to={to} />
           </MenuItem>
+          </Draggable>
         ))}
         </Container>
-        </DndContext>
+        
       </Menu>
     </ProSidebar>
   );
