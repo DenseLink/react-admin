@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+const StyledTaskbarEntries = styled.div`
+  background-color: purple;
+  height: 100%;
+  left: 30px;
+  position: absolute;
+  right: 90px;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+`;
 const StyledTaskbar = styled.nav`
   background-color: orange;
   bottom: 0;
@@ -16,10 +26,12 @@ const StyledStartButton = styled.button`
   position: absolute;
   width: 30px;
 `;
-const StyledTaskbarEntry = styled.li`
+const StyledTaskbarEntry = styled.div`
   background-color: pink;
   height: 100%;
   width: 80px;
+  left: 30px;
+  display: inline-block;
 `;
 const StyledClock = styled.time`
   background-color: green;
@@ -28,14 +40,7 @@ const StyledClock = styled.time`
   right: 0;
   width: 90px;
 `;
-const StyledTaskbarEntries = styled.ol`
-  background-color: purple;
-  height: 100%;
-  left: 50px;
-  position: absolute;
-  right: 90px;
-  width: 100%;
-`;
+
 const Taskbar = () => (
     <StyledTaskbar>
         <StyledStartButton type = 'button'>
