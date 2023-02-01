@@ -17,6 +17,7 @@ import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar";
 import Words from "./scenes/words";
 import Taskbar from "./scenes/global/Taskbar";
+import Window from "./scenes/global/imports/Window/index.tsx";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -27,8 +28,10 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          <Taskbar />
-          <Sidebar isSidebar={isSidebar} />
+          <Window />
+            <Taskbar />
+          
+          
           <main className="content">
             <Topbar setIsSidebar={setIsSidebar} />
             <Routes>
