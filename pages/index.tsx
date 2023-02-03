@@ -4,10 +4,12 @@ import type { ComponentType, FC, ReactElement} from 'react';
 import { createContext} from 'react';
 // eslint-disable-next-line import/no-duplicates
 import { useState } from 'react';
+import styled from 'styled-components';
 
 
 type Process = {
   Component: ComponentType;
+  hasWindow: boolean;
 };
 
 type Processes = {
@@ -23,7 +25,8 @@ const ProcessContext = createContext<ProcessContextState>({ processes: {} });
 const processDirectory: Processes = {
   HelloWorld: {
     // eslint-disable-next-line import/extensions
-    Component: dynamic(() => import('./HelloWorld'))
+    Component: dynamic(() => import('./HelloWorld')),
+    hasWindow: true
   }
 };
 
@@ -41,14 +44,25 @@ const ProcessProvider: FC = ({ children }) => (
   </ProcessContext.Provider>
 );
 
+
+const StyledWindow = styled.section`
+  background-color: ${({ theme }) => theme.colors.window};
+`;
+const Window: FC = ({ children }) => <StyledWindow>{children}</StyledWindow>;
 const ProcessConsumer = ProcessContext.Consumer;
 
 const ProcessLoader: FC = () => (
   <ProcessConsumer>
     {({ processes }) =>
-      Object.entries(processes).map(([id, { Component }]) => (
-        <Component key={id} />
-      ))
+       Object.entries(processes).map(([id, { Component, hasWindow }]) =>
+        hasWindow ? (
+          <Window key={id}>
+            <Component />
+          </Window>
+        ) : (
+         <Component key={id} />
+        )
+      )
     }
   </ProcessConsumer>
 );
