@@ -51,18 +51,21 @@ const StyledWindow = styled.section`
 const Window: FC = ({ children }) => <StyledWindow>{children}</StyledWindow>;
 const ProcessConsumer = ProcessContext.Consumer;
 
+const RenderProcess: FC<Process> = ({ Component, hasWindow }) =>
+  hasWindow ? (
+    <Window>
+      <Component />
+    </Window>
+  ) : (
+    <Component />
+  );
+
 const ProcessLoader: FC = () => (
   <ProcessConsumer>
     {({ processes }) =>
-       Object.entries(processes).map(([id, { Component, hasWindow }]) =>
-        hasWindow ? (
-          <Window key={id}>
-            <Component />
-          </Window>
-        ) : (
-         <Component key={id} />
-        )
-      )
+        Object.entries(processes).map(([id, process]) => (
+          <RenderProcess key={id} {...process} />
+        ))
     }
   </ProcessConsumer>
 );
