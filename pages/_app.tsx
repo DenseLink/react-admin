@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import type { FC, ReactElement } from 'react';
+import { createContext } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import packageJson from '../package.json';
@@ -25,20 +26,38 @@ const themes = {
 }
 };
 
-type Theme = {
+type DefaultTheme = {
   colors: {
     primary: string;
-  };
+  }
 };
 
-type StyledAppProps = {
-  theme?: Theme;
+type SessionContextState  = {
+  theme?: DefaultTheme;
 };
 
-const StyledApp: FC<StyledAppProps> = ({children, theme = themes.default}) => (
+const useSessionContextState = (): SessionContextState => ({
+  theme: undefined // TODO: Load user theme from localStorage
+});
+
+const SessionContext = createContext<SessionContextState>({});
+
+const SessionConsumer = SessionContext.Consumer;
+
+const SessionProvider: FC = ({ children }) => (
+  <SessionContext.Provider value={useSessionContextState()}>
+    {children}
+  </SessionContext.Provider>
+);
+
+const StyledApp: FC = ({ children }) => (
   <>
     <GlobalStyle />
-    <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    <SessionConsumer>
+      {({ theme = themes.default }) => (
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      )}
+    </SessionConsumer>
   </>
 );
 
@@ -61,6 +80,7 @@ const Metadata: FC<MetadataProps> = ({
     <title>{title}</title>
   </Head>
 );
+
 Metadata.defaultProps = {
   description: packageJson.description,
   title: packageJson.description
@@ -70,9 +90,11 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
   return (
     <>
       <Metadata />
-      <StyledApp>
-        <Component {...pageProps} />
-      </StyledApp>
+      <SessionProvider>
+        <StyledApp>
+          <Component {...pageProps} />
+        </StyledApp>
+      </SessionProvider>
     </>
   );
 }

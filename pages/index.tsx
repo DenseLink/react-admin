@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import type { FC, ReactElement} from 'react';
+import type { ComponentType, FC, ReactElement} from 'react';
 // eslint-disable-next-line import/no-duplicates
 import { createContext} from 'react';
 // eslint-disable-next-line import/no-duplicates
@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 
 type Process = {
-  Component: any;
+  Component: ComponentType;
 };
 
 type Processes = {
@@ -15,7 +15,7 @@ type Processes = {
 };
 
 type ProcessContextState = {
-  processes: Partial<Process>;
+  processes: Processes;
 };
 
 const ProcessContext = createContext<ProcessContextState>({ processes: {} });
@@ -27,19 +27,23 @@ const processDirectory: Processes = {
   }
 };
 
-const ProcessProvider: FC = ({ children }) => {
-  const [processes] = useState(processDirectory);
+const useProcessContextState = (
+  startupProcesses: Processes
+): ProcessContextState => {
+  const [processes] = useState(startupProcesses);
 
-  return (
-    <ProcessContext.Provider value={{ processes }}>
-      {children}
-    </ProcessContext.Provider>
-  );
+  return { processes };
 };
+
+const ProcessProvider: FC = ({ children }) => (
+  <ProcessContext.Provider value={useProcessContextState(processDirectory)}>
+    {children}
+  </ProcessContext.Provider>
+);
 
 const ProcessConsumer = ProcessContext.Consumer;
 
-const WindowManager: FC = () => (
+const ProcessLoader: FC = () => (
   <ProcessConsumer>
     {({ processes }) =>
       Object.entries(processes).map(([id, { Component }]) => (
@@ -52,7 +56,7 @@ const WindowManager: FC = () => (
 export default function Home(): ReactElement {
   return (
     <ProcessProvider>
-      <WindowManager />
+      <ProcessLoader />
     </ProcessProvider>
   );
 }
