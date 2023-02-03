@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import styled from 'styled-components';
 
 const Title = styled.h1`
@@ -7,6 +7,8 @@ const Title = styled.h1`
   text-align: center;
 `;
 
+const HelloWorld: FC = () => <Title>Hello, world!</Title>;
+
 export default function Home(): ReactElement {
-  return <Title>Hello, world!</Title>;
+  return <HelloWorld />;
 }
