@@ -1,14 +1,18 @@
-import type { FC, ReactElement } from 'react';
-import styled from 'styled-components';
+import dynamic from 'next/dynamic';
+import type { ReactElement } from 'react';
 
-const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.primary};
-  font-size: 50px;
-  text-align: center;
-`;
 
-const HelloWorld: FC = () => <Title>Hello, world!</Title>;
+
+const processDirectory = {
+  HelloWorld: {
+    // eslint-disable-next-line import/extensions
+    Component: dynamic(() => import('./HelloWorld'))
+  }
+};
+
+
 
 export default function Home(): ReactElement {
-  return <HelloWorld />;
+  const HelloWorldComponent = processDirectory.HelloWorld.Component;
+  return <HelloWorldComponent />;
 }
