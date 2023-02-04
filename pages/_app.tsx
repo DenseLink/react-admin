@@ -38,7 +38,7 @@ type SessionContextState  = {
 
 const useSessionContextState = (): SessionContextState => ({});
 
-export const initialSessionContextState = {};
+const initialSessionContextState = {};
 
 const SessionContext = createContext<SessionContextState>(
   initialSessionContextState
