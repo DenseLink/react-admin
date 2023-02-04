@@ -38,14 +38,7 @@ type SessionContextState  = {
 
 const useSessionContextState = (): SessionContextState => ({});
 
-const initialSessionContextState = {
-  theme: {
-    colors: {
-      primary: '',
-      window: ''
-    }
-  }
-};
+export const initialSessionContextState = {};
 
 const SessionContext = createContext<SessionContextState>(
   initialSessionContextState
