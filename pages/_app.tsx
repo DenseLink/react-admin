@@ -78,8 +78,8 @@ StyledApp.defaultProps = {
 
 
 type MetadataProps = {
-  description?: string;
-  title?: string;
+  description: string;
+  title: string;
 };
 
 const Metadata: FC<MetadataProps> = ({
@@ -92,15 +92,10 @@ const Metadata: FC<MetadataProps> = ({
   </Head>
 );
 
-Metadata.defaultProps = {
-  description: packageJson.description,
-  title: packageJson.description
-};
-
 export default function App({ Component, pageProps }: AppProps): ReactElement {
   return (
     <>
-      <Metadata />
+      <Metadata description={packageJson.name} title={packageJson.description}/>
       <SessionProvider>
         <StyledApp>
           <Component {...pageProps} />
