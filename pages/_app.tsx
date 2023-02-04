@@ -56,11 +56,11 @@ const SessionProvider: FC = ({ children }) => (
   </SessionContext.Provider>
 );
 
-const StyledApp: FC = ({ children }) => (
+const StyledApp: FC<StyledAppProps> = ({ children, currentTheme }) => (
   <>
     <GlobalStyle />
     <SessionConsumer>
-      {({ theme = themes.default }) => (
+      {({ theme = currentTheme }) => (
         <ThemeProvider theme={theme}>{children}</ThemeProvider>
       )}
     </SessionConsumer>
@@ -68,6 +68,7 @@ const StyledApp: FC = ({ children }) => (
 );
 
 StyledApp.defaultProps = {
+  // eslint-disable-next-line react/default-props-match-prop-types
   theme: themes.default
 };
 
