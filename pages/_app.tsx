@@ -80,10 +80,7 @@ type MetadataProps = {
   title: string;
 };
 
-const Metadata: FC<MetadataProps> = ({
-  description = packageJson.description,
-  title = packageJson.name
-}) => (
+const Metadata: FC<MetadataProps> = ({ description, title }) => (
   <Head>
     <meta name="description" content={description} />
     <title>{title}</title>
