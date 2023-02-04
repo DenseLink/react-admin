@@ -36,9 +36,7 @@ type SessionContextState  = {
   theme?: DefaultTheme;
 };
 
-const useSessionContextState = (): SessionContextState => ({
-  theme: undefined // TODO: Load user theme from localStorage
-});
+const useSessionContextState = (): SessionContextState => ({});
 
 const initialSessionContextState = {
   theme: {
