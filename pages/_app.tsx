@@ -40,7 +40,18 @@ const useSessionContextState = (): SessionContextState => ({
   theme: undefined // TODO: Load user theme from localStorage
 });
 
-const SessionContext = createContext<SessionContextState>({});
+const initialSessionContextState = {
+  theme: {
+    colors: {
+      primary: '',
+      window: ''
+    }
+  }
+};
+
+const SessionContext = createContext<SessionContextState>(
+  initialSessionContextState
+);
 
 const SessionConsumer = SessionContext.Consumer;
 

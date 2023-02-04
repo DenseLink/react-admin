@@ -20,7 +20,13 @@ type ProcessContextState = {
   processes: Processes;
 };
 
-const ProcessContext = createContext<ProcessContextState>({ processes: {} });
+const initialProccessContextState = {
+  processes: {}
+};
+
+const ProcessContext = createContext<ProcessContextState>(
+  initialProccessContextState
+);
 
 const processDirectory: Processes = {
   HelloWorld: {
