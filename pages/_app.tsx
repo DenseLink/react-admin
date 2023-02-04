@@ -36,6 +36,10 @@ type SessionContextState  = {
   theme?: DefaultTheme;
 };
 
+type StyledAppProps = {
+  currentTheme: DefaultTheme;
+};
+
 const useSessionContextState = (): SessionContextState => ({});
 
 const initialSessionContextState = {};
@@ -85,7 +89,7 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
     <>
       <Metadata description={packageJson.name} title={packageJson.description}/>
       <SessionProvider>
-        <StyledApp>
+        <StyledApp currentTheme={themes.default}>
           <Component {...pageProps} />
         </StyledApp>
       </SessionProvider>
