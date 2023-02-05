@@ -28,6 +28,8 @@ const ProcessContext = createContext<ProcessContextState>(
   initialProccessContextState
 );
 
+const STARTUP_PROCESSES: string[] = ['HelloWorld'];
+
 const processDirectory: Processes = {
   HelloWorld: {
     // eslint-disable-next-line import/extensions
@@ -35,6 +37,15 @@ const processDirectory: Processes = {
     hasWindow: true
   }
 };
+
+const getStartupProcesses = (): Processes =>
+  STARTUP_PROCESSES.reduce(
+    (acc, id) => ({
+      ...acc,
+      [id]: processDirectory[id]
+    }),
+    {}
+  );
 
 const useProcessContextState = (
   startupProcesses: Processes
@@ -44,8 +55,15 @@ const useProcessContextState = (
   return { processes };
 };
 
-const ProcessProvider: FC = ({ children }) => (
-  <ProcessContext.Provider value={useProcessContextState(processDirectory)}>
+type ProcessProviderProps = {
+  startupProcesses: Processes;
+};
+
+const ProcessProvider: FC<ProcessProviderProps> = ({
+  children,
+  startupProcesses
+}) => (
+  <ProcessContext.Provider value={useProcessContextState(startupProcesses)}>
     {children}
   </ProcessContext.Provider>
 );
@@ -78,7 +96,7 @@ const ProcessLoader: FC = () => (
 
 export default function Home(): ReactElement {
   return (
-    <ProcessProvider>
+    <ProcessProvider startupProcesses={getStartupProcesses()}>
       <ProcessLoader />
     </ProcessProvider>
   );
