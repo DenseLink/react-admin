@@ -47,6 +47,17 @@ const getStartupProcesses = (): Processes =>
     {}
   );
 
+  const StyledDesktop = styled.main`
+  background-color: #ca1b1b;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100vw;
+`;
+
 const useProcessContextState = (
   startupProcesses: Processes
 ): ProcessContextState => {
@@ -93,11 +104,14 @@ const ProcessLoader: FC = () => (
     }
   </ProcessConsumer>
 );
+const Desktop: FC = ({ children }) => <StyledDesktop>{children}</StyledDesktop>;
 
 export default function Home(): ReactElement {
   return (
-    <ProcessProvider startupProcesses={getStartupProcesses()}>
-      <ProcessLoader />
-    </ProcessProvider>
+    <Desktop>
+      <ProcessProvider startupProcesses={getStartupProcesses()}>
+        <ProcessLoader />
+      </ProcessProvider>
+    </Desktop>
   );
 }
