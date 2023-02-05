@@ -24,7 +24,7 @@ const initialProccessContextState = {
   processes: {}
 };
 
-const ProcessContext = createContext<ProcessContextState>(
+const { Consumer, Provider } = createContext<ProcessContextState>(
   initialProccessContextState
 );
 
@@ -63,9 +63,9 @@ const ProcessProvider: FC<ProcessProviderProps> = ({
   children,
   startupProcesses
 }) => (
-  <ProcessContext.Provider value={useProcessContextState(startupProcesses)}>
+  <Provider value={useProcessContextState(startupProcesses)}>
     {children}
-  </ProcessContext.Provider>
+    </Provider>
 );
 
 
@@ -73,7 +73,7 @@ const StyledWindow = styled.section`
   background-color: ${({ theme }) => theme.colors.window};
 `;
 const Window: FC = ({ children }) => <StyledWindow>{children}</StyledWindow>;
-const ProcessConsumer = ProcessContext.Consumer;
+const ProcessConsumer = Consumer;
 
 const RenderProcess: FC<Process> = ({ Component, hasWindow }) =>
   hasWindow ? (

@@ -44,16 +44,14 @@ const useSessionContextState = (): SessionContextState => ({});
 
 const initialSessionContextState = {};
 
-const SessionContext = createContext<SessionContextState>(
+const { Consumer, Provider } = createContext<SessionContextState>(
   initialSessionContextState
 );
 
-const SessionConsumer = SessionContext.Consumer;
+const SessionConsumer = Consumer;
 
 const SessionProvider: FC = ({ children }) => (
-  <SessionContext.Provider value={useSessionContextState()}>
-    {children}
-  </SessionContext.Provider>
+  <Provider value={useSessionContextState()}>{children}</Provider>
 );
 
 const StyledApp: FC<StyledAppProps> = ({ children, currentTheme }) => (
