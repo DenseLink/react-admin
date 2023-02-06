@@ -1,13 +1,10 @@
 import dynamic from 'next/dynamic';
-import type { ComponentType, FC, ReactElement} from 'react';
+import type { ComponentType, FC, ReactElement } from 'react';
 // eslint-disable-next-line import/no-duplicates
-import { createContext} from 'react';
+import { createContext } from 'react';
 // eslint-disable-next-line import/no-duplicates
 import { useState } from 'react';
 import styled from 'styled-components';
-
-
-
 
 type Process = {
   Component: ComponentType;
@@ -40,7 +37,7 @@ const Taskbar: Process = {
   Component: dynamic(() => import('./Taskbar'))
 };
 
-  const StyledDesktop = styled.main`
+const StyledDesktop = styled.main`
   background-color: #ac898992;
   bottom: 0;
   height: 100vh;
@@ -62,7 +59,6 @@ const ProcessProvider: React.FC = ({ children }) => (
   <Provider value={useProcessContextState()}>{children}</Provider>
 );
 
-
 const StyledWindow = styled.section`
   background-color: ${({ theme }) => theme.colors.window};
 `;
@@ -78,13 +74,14 @@ const RenderProcess: FC<Process> = ({ Component, hasWindow }) =>
     <Component />
   );
 
-  const ProcessesReducer = ([id, process]: [string, Process]) => (
+const renderProcesses = (processes: Processes) =>
+  Object.entries(processes).map(([id, process]) => (
     <RenderProcess key={id} {...process} />
-  );
+  ));
 
 const ProcessLoader: FC = () => (
   <ProcessConsumer>
-    {({ processes }) => Object.entries(processes).map(ProcessesReducer)}
+    {({ processes }) => renderProcesses(processes)}
   </ProcessConsumer>
 );
 const Desktop: FC = ({ children }) => <StyledDesktop>{children}</StyledDesktop>;
