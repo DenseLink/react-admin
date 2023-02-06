@@ -10,7 +10,9 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import packageJson from '../package.json';
 
 const GlobalStyle = createGlobalStyle`
-  * {
+   *,
+  *::before,
+  *::after {
     border: 0;
     box-sizing: border-box;
     margin: 0;
