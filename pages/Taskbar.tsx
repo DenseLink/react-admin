@@ -35,7 +35,6 @@ const StyledTaskbarEntries = styled.ol`
   left: 30px;
   position: absolute;
   right: 90px;
-  width: 100%;
 `;
 
 const StyledTaskbarEntry = styled.li`
