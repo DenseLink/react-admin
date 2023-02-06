@@ -3,6 +3,7 @@ import { faWindows } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const StyledClock = styled.time`
+  color: rgba(255, 255, 255, 80%);
   display: flex;
   font-size: 12px;
   height: 100%;
