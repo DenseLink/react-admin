@@ -58,7 +58,9 @@ const TaskbarEntry: React.FC = () => (
 
 const Clock: React.FC = () => <StyledClock>11:17:22 PM</StyledClock>;
 
-const StartButton: React.FC = () => <StyledStartButton>X</StyledStartButton>;
+const StartButton: React.FC = () => (
+  <StyledStartButton type="button">X</StyledStartButton>
+);
 
 const TaskbarEntries: React.FC = () => (
   <StyledTaskbarEntries>
