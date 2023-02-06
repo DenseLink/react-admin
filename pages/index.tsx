@@ -48,7 +48,7 @@ const getStartupProcesses = (): Processes =>
   );
 
   const StyledDesktop = styled.main`
-  background-color: #ca1b1b;
+  background-color: #ac898992;
   bottom: 0;
   height: 100vh;
   left: 0;

@@ -1,6 +1,9 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import type { FC, ReactElement } from 'react';
+import type { Dispatch, FC, ReactElement, SetStateAction} from 'react';
+// eslint-disable-next-line import/no-duplicates
+import { useState } from 'react';
+// eslint-disable-next-line import/no-duplicates
 import { createContext } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
@@ -16,12 +19,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const themes = {
-  default: {
-    colors: {
-    primary: '#2e248d'
+const defaultTheme = {
+  colors: {
+    primary: '#2e248d',
+    window: '#808080'
   }
-}
 };
 
 type DefaultTheme = {
@@ -30,17 +32,32 @@ type DefaultTheme = {
   }
 };
 
+type Themes = {
+  [key: string]: DefaultTheme;
+};
+
+const themes: Themes = { defaultTheme };
+
 type SessionContextState  = {
-  theme?: DefaultTheme;
+  themeName: string;
+  setThemeName: Dispatch<SetStateAction<string>>;
 };
 
-type StyledAppProps = {
-  currentTheme: DefaultTheme;
+
+
+const useSessionContextState = (): SessionContextState => {
+  const [themeName, setThemeName] = useState('');
+
+  return {
+    themeName,
+    setThemeName
+  };
 };
 
-const useSessionContextState = (): SessionContextState => ({});
-
-const initialSessionContextState = {};
+const initialSessionContextState: SessionContextState = {
+  themeName: '',
+  setThemeName: () => undefined
+};
 
 const { Consumer, Provider } = createContext<SessionContextState>(
   initialSessionContextState
@@ -52,12 +69,14 @@ const SessionProvider: FC = ({ children }) => (
   <Provider value={useSessionContextState()}>{children}</Provider>
 );
 
-const StyledApp: FC<StyledAppProps> = ({ children, currentTheme }) => (
+const StyledApp: FC = ({ children }) => (
   <>
     <GlobalStyle />
     <SessionConsumer>
-      {({ theme = currentTheme }) => (
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      {({ themeName }) => (
+        <ThemeProvider theme={themes[themeName] || themes.defaultTheme}>
+          {children}
+        </ThemeProvider>
       )}
     </SessionConsumer>
   </>
@@ -84,9 +103,9 @@ const Metadata: FC<MetadataProps> = ({ description, title }) => (
 export default function App({ Component, pageProps }: AppProps): ReactElement {
   return (
     <>
-      <Metadata description={packageJson.name} title={packageJson.description}/>
+      <Metadata description={packageJson.name} title={packageJson.description} />
       <SessionProvider>
-        <StyledApp currentTheme={themes.default}>
+        <StyledApp>
           <Component {...pageProps} />
         </StyledApp>
       </SessionProvider>
