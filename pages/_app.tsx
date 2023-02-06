@@ -131,12 +131,12 @@ const Metadata: FC<MetadataProps> = ({ description, title }) => (
 
 const App = ({ Component, pageProps }: AppProps): React.ReactElement => (
   <>
-      <Metadata description={packageJson.name} title={packageJson.description} />
-      <SessionProvider>
-        <StyledApp>
-          <Component {...pageProps} />
-        </StyledApp>
-      </SessionProvider>
+    <SessionProvider>
+      <StyledApp>
+        <Metadata description={packageJson.name} title={packageJson.description} />
+        <Component {...pageProps} />
+      </StyledApp>
+    </SessionProvider>
   </>
 );
 
