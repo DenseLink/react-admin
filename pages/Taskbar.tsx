@@ -50,7 +50,7 @@ const StyledTaskbarEntry = styled.li`
   height: 100%;
   place-content: center;
   place-items: center;
-  width: 80px;
+  max-width: '161px';
 `;
 
 const TaskbarEntry: React.FC = () => (
