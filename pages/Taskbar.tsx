@@ -62,7 +62,9 @@ const Clock: React.FC = () => (
 );
 
 const StartButton: React.FC = () => (
-  <StyledStartButton type="button" title="Start">X</StyledStartButton>
+  <StyledStartButton type="button" title="Start">
+    X
+  </StyledStartButton>
 );
 
 const TaskbarEntries: React.FC = () => (
