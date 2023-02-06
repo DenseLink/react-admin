@@ -45,7 +45,8 @@ const Taskbar: Process = {
   bottom: 0;
   height: 100vh;
   left: 0;
-  position: fixed;
+  overflow: hidden;
+  position: absolute;
   right: 0;
   top: 0;
   width: 100vw;
