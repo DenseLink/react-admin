@@ -6,10 +6,14 @@ import { createContext} from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/extensions
+import Taskbar from './Taskbar';
+
 
 type Process = {
   Component: ComponentType;
-  hasWindow: boolean;
+  // eslint-disable-next-line react/require-default-props
+  hasWindow?: boolean;
 };
 
 type Processes = {
@@ -28,13 +32,16 @@ const { Consumer, Provider } = createContext<ProcessContextState>(
   initialProccessContextState
 );
 
-const STARTUP_PROCESSES: string[] = ['HelloWorld'];
+const STARTUP_PROCESSES: string[] = ['HelloWorld', 'Taskbar'];
 
 const processDirectory: Processes = {
   HelloWorld: {
     // eslint-disable-next-line import/extensions
     Component: dynamic(() => import('./HelloWorld')),
     hasWindow: true
+  },
+  Taskbar: {
+    Component: Taskbar
   }
 };
 
