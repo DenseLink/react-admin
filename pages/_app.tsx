@@ -61,15 +61,35 @@ const initialSessionContextState: SessionContextState = {
   setThemeName: () => undefined
 };
 
-const { Consumer, Provider } = createContext<SessionContextState>(
-  initialSessionContextState
+type ContextFactory = <T>(
+  initialContextState: T,
+  useContextState: () => T
+) => {
+  Consumer: React.Consumer<T>;
+  Provider: React.FC;
+};
+
+
+const contextFactory: ContextFactory = (
+  initialContextState,
+  useContextState
+) => {
+  const { Consumer, Provider } = createContext(initialContextState);
+  const ProcessProvider: React.FC = ({ children }) => (
+    <Provider value={useContextState()}>{children}</Provider>
+  );
+
+  return { Consumer, Provider: ProcessProvider };
+};
+
+const { Consumer, Provider } = contextFactory<SessionContextState>(
+  initialSessionContextState,
+  useSessionContextState
 );
 
 const SessionConsumer = Consumer;
 
-const SessionProvider: FC = ({ children }) => (
-  <Provider value={useSessionContextState()}>{children}</Provider>
-);
+const SessionProvider = Provider;
 
 const StyledApp: FC = ({ children }) => (
   <>
@@ -101,6 +121,9 @@ const Metadata: FC<MetadataProps> = ({ description, title }) => (
     <title>{title}</title>
   </Head>
 );
+
+
+
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
   return (
