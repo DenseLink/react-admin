@@ -1,7 +1,4 @@
-import styled from "styled-components";
-
-
-
+import styled from 'styled-components';
 
 const StyledClock = styled.time`
   background-color: green;
@@ -15,7 +12,9 @@ const StyledClock = styled.time`
   width: 76px;
 `;
 
-const StyledStartButton = styled.button`
+const StyledStartButton = styled.button.attrs({
+  type: 'button'
+})`
   background-color: red;
   display: flex;
   height: 100%;
@@ -62,9 +61,7 @@ const Clock: React.FC = () => (
 );
 
 const StartButton: React.FC = () => (
-  <StyledStartButton type="button" title="Start">
-    X
-  </StyledStartButton>
+  <StyledStartButton title="Start">X</StyledStartButton>
 );
 
 const TaskbarEntries: React.FC = () => (
