@@ -58,25 +58,14 @@ const getStartupProcesses = (): Processes =>
   width: 100vw;
 `;
 
-const useProcessContextState = (
-  startupProcesses: Processes
-): ProcessContextState => {
-  const [processes] = useState(startupProcesses);
+const useProcessContextState = (): ProcessContextState => {
+  const [processes] = useState(getStartupProcesses());
 
   return { processes };
 };
 
-type ProcessProviderProps = {
-  startupProcesses: Processes;
-};
-
-const ProcessProvider: FC<ProcessProviderProps> = ({
-  children,
-  startupProcesses
-}) => (
-  <Provider value={useProcessContextState(startupProcesses)}>
-    {children}
-    </Provider>
+const ProcessProvider: React.FC = ({ children }) => (
+  <Provider value={useProcessContextState()}>{children}</Provider>
 );
 
 
@@ -109,7 +98,7 @@ const Desktop: FC = ({ children }) => <StyledDesktop>{children}</StyledDesktop>;
 export default function Home(): ReactElement {
   return (
     <Desktop>
-      <ProcessProvider startupProcesses={getStartupProcesses()}>
+      <ProcessProvider>
         <ProcessLoader />
       </ProcessProvider>
     </Desktop>
