@@ -6,8 +6,7 @@ import { createContext} from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-// eslint-disable-next-line import/extensions
-import Taskbar from './Taskbar';
+
 
 
 type Process = {
@@ -32,27 +31,14 @@ const { Consumer, Provider } = createContext<ProcessContextState>(
   initialProccessContextState
 );
 
-const STARTUP_PROCESSES: string[] = ['HelloWorld', 'Taskbar'];
-
-const processDirectory: Processes = {
-  HelloWorld: {
-    // eslint-disable-next-line import/extensions
-    Component: dynamic(() => import('./HelloWorld')),
-    hasWindow: true
-  },
-  Taskbar: {
-    Component: Taskbar
-  }
+const HelloWorld: Process = {
+  Component: dynamic(() => import('./HelloWorld')),
+  hasWindow: true
 };
 
-const getStartupProcesses = (): Processes =>
-  STARTUP_PROCESSES.reduce(
-    (processes, processId) => ({
-      ...processes,
-      [processId]: processDirectory[processId]
-    }),
-    {}
-  );
+const Taskbar: Process = {
+  Component: dynamic(() => import('./Taskbar'))
+};
 
   const StyledDesktop = styled.main`
   background-color: #ac898992;
@@ -66,7 +52,7 @@ const getStartupProcesses = (): Processes =>
 `;
 
 const useProcessContextState = (): ProcessContextState => {
-  const [processes] = useState(getStartupProcesses());
+  const [processes] = useState({ Taskbar, HelloWorld });
 
   return { processes };
 };
