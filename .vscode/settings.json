@@ -1,3 +1,5 @@
 {
-  "CodeGPT.query.language": "English"
+  "CodeGPT.query.language": "English",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }
