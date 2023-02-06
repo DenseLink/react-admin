@@ -40,9 +40,9 @@ const processDirectory: Processes = {
 
 const getStartupProcesses = (): Processes =>
   STARTUP_PROCESSES.reduce(
-    (acc, id) => ({
-      ...acc,
-      [id]: processDirectory[id]
+    (processes, processId) => ({
+      ...processes,
+      [processId]: processDirectory[processId]
     }),
     {}
   );
