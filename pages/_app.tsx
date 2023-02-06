@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import type { Dispatch, FC, ReactElement, SetStateAction} from 'react';
+import type { Dispatch, FC, ReactElement, SetStateAction } from 'react';
 // eslint-disable-next-line import/no-duplicates
 import { useState } from 'react';
 // eslint-disable-next-line import/no-duplicates
@@ -35,7 +35,7 @@ const defaultTheme = {
 type DefaultTheme = {
   colors: {
     primary: string;
-  }
+  };
 };
 
 type Themes = {
@@ -44,12 +44,10 @@ type Themes = {
 
 const themes: Themes = { defaultTheme };
 
-type SessionContextState  = {
+type SessionContextState = {
   themeName: string;
   setThemeName: Dispatch<SetStateAction<string>>;
 };
-
-
 
 const useSessionContextState = (): SessionContextState => {
   const [themeName, setThemeName] = useState('');
@@ -72,7 +70,6 @@ type ContextFactory = <T>(
   Consumer: React.Consumer<T>;
   Provider: React.FC;
 };
-
 
 const contextFactory: ContextFactory = (
   initialContextState,
@@ -98,13 +95,13 @@ const SessionProvider = Provider;
 const StyledApp: FC = ({ children }) => (
   <>
     <SessionConsumer>
-    {({ themeName }) => (
-      <ThemeProvider theme={themes[themeName] || themes.defaultTheme}>
-        <GlobalStyle />
-        {children}
-      </ThemeProvider>
-    )}
-  </SessionConsumer>
+      {({ themeName }) => (
+        <ThemeProvider theme={themes[themeName] || themes.defaultTheme}>
+          <GlobalStyle />
+          {children}
+        </ThemeProvider>
+      )}
+    </SessionConsumer>
   </>
 );
 
@@ -112,7 +109,6 @@ StyledApp.defaultProps = {
   // eslint-disable-next-line react/default-props-match-prop-types
   theme: themes.default
 };
-
 
 type MetadataProps = {
   description: string;
@@ -126,14 +122,14 @@ const Metadata: FC<MetadataProps> = ({ description, title }) => (
   </Head>
 );
 
-
-
-
 const App = ({ Component, pageProps }: AppProps): React.ReactElement => (
   <>
     <SessionProvider>
       <StyledApp>
-        <Metadata description={packageJson.name} title={packageJson.description} />
+        <Metadata
+          description={packageJson.name}
+          title={packageJson.description}
+        />
         <Component {...pageProps} />
       </StyledApp>
     </SessionProvider>
