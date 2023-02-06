@@ -24,6 +24,7 @@ const StyledStartButton = styled.button.attrs({
 `;
 
 const StyledTaskbar = styled.nav`
+  backdrop-filter: 5px;
   background-color: rgba(0, 0, 0, 60%);
   bottom: 0;
   height: 30px;
