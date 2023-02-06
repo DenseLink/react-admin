@@ -71,14 +71,14 @@ const SessionProvider: FC = ({ children }) => (
 
 const StyledApp: FC = ({ children }) => (
   <>
-    <GlobalStyle />
     <SessionConsumer>
-      {({ themeName }) => (
-        <ThemeProvider theme={themes[themeName] || themes.defaultTheme}>
-          {children}
-        </ThemeProvider>
-      )}
-    </SessionConsumer>
+    {({ themeName }) => (
+      <ThemeProvider theme={themes[themeName] || themes.defaultTheme}>
+        <GlobalStyle />
+        {children}
+      </ThemeProvider>
+    )}
+  </SessionConsumer>
   </>
 );
 
