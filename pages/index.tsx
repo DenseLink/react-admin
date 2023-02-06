@@ -78,13 +78,13 @@ const RenderProcess: FC<Process> = ({ Component, hasWindow }) =>
     <Component />
   );
 
+  const ProcessesReducer = ([id, process]: [string, Process]) => (
+    <RenderProcess key={id} {...process} />
+  );
+
 const ProcessLoader: FC = () => (
   <ProcessConsumer>
-    {({ processes }) =>
-        Object.entries(processes).map(([id, process]) => (
-          <RenderProcess key={id} {...process} />
-        ))
-    }
+    {({ processes }) => Object.entries(processes).map(ProcessesReducer)}
   </ProcessConsumer>
 );
 const Desktop: FC = ({ children }) => <StyledDesktop>{children}</StyledDesktop>;
