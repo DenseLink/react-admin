@@ -6,13 +6,13 @@ import styled from "styled-components";
 const StyledClock = styled.time`
   background-color: green;
   display: flex;
-  font-size: '12px';
+  font-size: 12px;
   height: 100%;
   place-content: center;
   place-items: center;
   position: absolute;
   right: 0;
-  width: '76px';
+  width: 76px;
 `;
 
 const StyledStartButton = styled.button`
@@ -23,7 +23,7 @@ const StyledStartButton = styled.button`
   place-content: center;
   place-items: center;
   position: absolute;
-  width: '36px';
+  width: 36px;
 `;
 
 const StyledTaskbar = styled.nav`
@@ -50,7 +50,7 @@ const StyledTaskbarEntry = styled.li`
   height: 100%;
   place-content: center;
   place-items: center;
-  max-width: '161px';
+  max-width: 161px;
 `;
 
 const TaskbarEntry: React.FC = () => (
