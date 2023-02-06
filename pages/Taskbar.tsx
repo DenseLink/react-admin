@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { faWindows } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const StyledClock = styled.time`
   display: flex;
@@ -14,7 +16,9 @@ const StyledClock = styled.time`
 const StyledStartButton = styled.button.attrs({
   type: 'button'
 })`
+  color: #fff;
   display: flex;
+  font-size: 19px;
   height: 100%;
   left: 0;
   place-content: center;
@@ -58,7 +62,9 @@ const Clock: React.FC = () => (
 );
 
 const StartButton: React.FC = () => (
-  <StyledStartButton title="Start">X</StyledStartButton>
+  <StyledStartButton title="Start">
+    <FontAwesomeIcon icon={faWindows} />
+  </StyledStartButton>
 );
 
 const TaskbarEntries: React.FC = () => (
