@@ -129,15 +129,15 @@ const Metadata: FC<MetadataProps> = ({ description, title }) => (
 
 
 
-export default function App({ Component, pageProps }: AppProps): ReactElement {
-  return (
-    <>
+const App = ({ Component, pageProps }: AppProps): React.ReactElement => (
+  <>
       <Metadata description={packageJson.name} title={packageJson.description} />
       <SessionProvider>
         <StyledApp>
           <Component {...pageProps} />
         </StyledApp>
       </SessionProvider>
-    </>
-  );
-}
+  </>
+);
+
+export default App;
