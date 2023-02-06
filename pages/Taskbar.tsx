@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const StyledClock = styled.time`
-  background-color: green;
   display: flex;
   font-size: 12px;
   height: 100%;
@@ -15,7 +14,6 @@ const StyledClock = styled.time`
 const StyledStartButton = styled.button.attrs({
   type: 'button'
 })`
-  background-color: red;
   display: flex;
   height: 100%;
   left: 0;
@@ -26,7 +24,7 @@ const StyledStartButton = styled.button.attrs({
 `;
 
 const StyledTaskbar = styled.nav`
-  background-color: orange;
+  background-color: rgba(0, 0, 0, 60%);
   bottom: 0;
   height: 30px;
   left: 0;
@@ -36,7 +34,6 @@ const StyledTaskbar = styled.nav`
 `;
 
 const StyledTaskbarEntries = styled.ol`
-  background-color: purple;
   height: 100%;
   left: 30px;
   position: absolute;
@@ -44,7 +41,6 @@ const StyledTaskbarEntries = styled.ol`
 `;
 
 const StyledTaskbarEntry = styled.li`
-  background-color: pink;
   display: flex;
   height: 100%;
   place-content: center;
