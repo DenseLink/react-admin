@@ -1,13 +1,16 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import type { Dispatch, FC, ReactElement, SetStateAction } from 'react';
+import type { Dispatch, FC, SetStateAction } from 'react';
 // eslint-disable-next-line import/no-duplicates
 import { useState } from 'react';
 // eslint-disable-next-line import/no-duplicates
-import { createContext } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import packageJson from '../package.json';
+// eslint-disable-next-line import/extensions
+import contextFactory from './contextFactory';
+// eslint-disable-next-line import/extensions
+import { FileSystemProvider } from './fileSystem';
 
 const GlobalStyle = createGlobalStyle`
    *,
@@ -69,26 +72,6 @@ const initialSessionContextState: SessionContextState = {
   setThemeName: () => undefined
 };
 
-type ContextFactory = <T>(
-  initialContextState: T,
-  useContextState: () => T
-) => {
-  Consumer: React.Consumer<T>;
-  Provider: React.FC;
-};
-
-const contextFactory: ContextFactory = (
-  initialContextState,
-  useContextState
-) => {
-  const { Consumer, Provider } = createContext(initialContextState);
-  const ProcessProvider: React.FC = ({ children }) => (
-    <Provider value={useContextState()}>{children}</Provider>
-  );
-
-  return { Consumer, Provider: ProcessProvider };
-};
-
 const { Consumer, Provider } = contextFactory<SessionContextState>(
   initialSessionContextState,
   useSessionContextState
@@ -129,7 +112,7 @@ const Metadata: FC<MetadataProps> = ({ description, title }) => (
 );
 
 const App = ({ Component, pageProps }: AppProps): React.ReactElement => (
-  <>
+  <FileSystemProvider>
     <SessionProvider>
       <StyledApp>
         <Metadata
@@ -139,7 +122,7 @@ const App = ({ Component, pageProps }: AppProps): React.ReactElement => (
         <Component {...pageProps} />
       </StyledApp>
     </SessionProvider>
-  </>
+  </FileSystemProvider>
 );
 
 export default App;
