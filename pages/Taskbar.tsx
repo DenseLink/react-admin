@@ -48,7 +48,7 @@ const StyledTaskbarEntries = styled.ol`
 
 const StyledTaskbarEntry = styled.li`
   border-bottom: ${({ theme }) => `
-    ${theme.sizes.taskbar.entry.borderSize} solid ${theme.colors.highlight}
+    ${'2px'} solid ${theme.colors.highlight}
   `};
   display: flex;
   height: 100%;
@@ -58,12 +58,12 @@ const StyledTaskbarEntry = styled.li`
     display: flex;
     figcaption {
       color: ${({ theme }) => theme.colors.opaqueWhite};
-      font-size: ${({ theme }) => theme.sizes.taskbar.entry.fontSize};
+      font-size: ${({ theme }) => '12px'};
     }
     img {
-      height: ${({ theme }) => theme.sizes.taskbar.entry.icon.size};
-      margin: ${({ theme }) => theme.sizes.taskbar.entry.icon.margin};
-      width: ${({ theme }) => theme.sizes.taskbar.entry.icon.size};
+      height: ${({ theme }) => '12px'};
+      margin: ${({ theme }) => '12px'};
+      width: ${({ theme }) => '12px'};
     }
   }
 `;
