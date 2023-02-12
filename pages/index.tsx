@@ -29,11 +29,13 @@ const { Consumer, Provider } = createContext<ProcessContextState>(
 );
 
 const HelloWorld: Process = {
+  // eslint-disable-next-line import/extensions
   Component: dynamic(() => import('./HelloWorld')),
   hasWindow: true
 };
 
 const Taskbar: Process = {
+  // eslint-disable-next-line import/extensions
   Component: dynamic(() => import('./Taskbar'))
 };
 
@@ -74,14 +76,15 @@ const RenderProcess: FC<Process> = ({ Component, hasWindow }) =>
     <Component />
   );
 
-const renderProcesses = (processes: Processes) =>
-  Object.entries(processes).map(([id, process]) => (
-    <RenderProcess key={id} {...process} />
-  ));
-
 const ProcessLoader: FC = () => (
   <ProcessConsumer>
-    {({ processes }) => renderProcesses(processes)}
+    {
+      ({ processes }) =>
+        Object.entries(processes).map(([id, process]) => (
+          <RenderProcess key={id} {...process} />
+        ))
+      // eslint-disable-next-line react/jsx-curly-newline
+    }
   </ProcessConsumer>
 );
 const Desktop: FC = ({ children }) => <StyledDesktop>{children}</StyledDesktop>;
