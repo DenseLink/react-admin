@@ -2,6 +2,9 @@ import { faWindows } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/extensions
+import { ProcessConsumer } from './contextFactory/process';
+
 const StyledClock = styled.time`
   color: rgba(255, 255, 255, 80%);
   display: flex;
@@ -94,7 +97,13 @@ const StartButton: React.FC = () => (
 
 const TaskbarEntries: React.FC = () => (
   <StyledTaskbarEntries>
-    <TaskbarEntry icon="" title="" />
+    <ProcessConsumer>
+      {({ processes }) =>
+        Object.entries(processes).map(([id, { icon, title }]) => (
+          <TaskbarEntry key={id} icon={icon} title={title} />
+        ))
+      }
+    </ProcessConsumer>
   </StyledTaskbarEntries>
 );
 

@@ -3,9 +3,10 @@ import type { ComponentType, FC, ReactElement } from 'react';
 // eslint-disable-next-line import/no-duplicates
 import { createContext } from 'react';
 // eslint-disable-next-line import/no-duplicates
-import { useState } from 'react';
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/extensions
+import useProcessContextState from './contextFactory/useProcessContextState';
 // eslint-disable-next-line import/extensions
 import HelloWorld from './HelloWorld';
 // eslint-disable-next-line import/extensions
@@ -52,12 +53,6 @@ const StyledDesktop = styled.main`
   top: 0;
   width: 100vw;
 `;
-
-const useProcessContextState = (): ProcessContextState => {
-  const [processes] = useState<Processes>({});
-
-  return { processes };
-};
 
 const ProcessProvider: React.FC = ({ children }) => (
   <Provider value={useProcessContextState()}>{children}</Provider>
