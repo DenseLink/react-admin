@@ -47,6 +47,10 @@
       { "prefer": "type-imports" }
     ],
     "comma-dangle": ["error", "never"],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ],
     "max-lines": ["error", 200],
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "react/jsx-props-no-spreading": "off",
