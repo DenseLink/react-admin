@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import { faWindows } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components';
 
 const StyledClock = styled.time`
   color: rgba(255, 255, 255, 80%);
