@@ -6,6 +6,11 @@ import { createContext } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/extensions
+import HelloWorld from './HelloWorld';
+// eslint-disable-next-line import/extensions
+import Taskbar from './Taskbar';
+
 type Process = {
   Component: ComponentType;
   // eslint-disable-next-line react/require-default-props
@@ -28,15 +33,12 @@ const { Consumer, Provider } = createContext<ProcessContextState>(
   initialProccessContextState
 );
 
-const HelloWorld: Process = {
-  // eslint-disable-next-line import/extensions
-  Component: dynamic(() => import('./HelloWorld')),
-  hasWindow: true
-};
-
-const Taskbar: Process = {
-  // eslint-disable-next-line import/extensions
-  Component: dynamic(() => import('./Taskbar'))
+const processDirectory: Processes = {
+  HelloWorld: {
+    // eslint-disable-next-line import/extensions
+    Component: dynamic(() => import('./HelloWorld')),
+    hasWindow: true
+  }
 };
 
 const StyledDesktop = styled.main`
@@ -52,7 +54,7 @@ const StyledDesktop = styled.main`
 `;
 
 const useProcessContextState = (): ProcessContextState => {
-  const [processes] = useState<Processes>({ Taskbar, HelloWorld });
+  const [processes] = useState<Processes>({});
 
   return { processes };
 };
@@ -93,6 +95,7 @@ export default function Home(): ReactElement {
   return (
     <Desktop>
       <ProcessProvider>
+        <Taskbar />
         <ProcessLoader />
       </ProcessProvider>
     </Desktop>
