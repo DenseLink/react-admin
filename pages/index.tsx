@@ -6,7 +6,7 @@ import { createContext } from 'react';
 import styled from 'styled-components';
 
 // eslint-disable-next-line import/extensions
-import useProcessContextState from './contextFactory/useProcessContextState';
+import { useProcessContextState } from './contextFactory/process';
 // eslint-disable-next-line import/extensions
 import HelloWorld from './HelloWorld';
 // eslint-disable-next-line import/extensions
