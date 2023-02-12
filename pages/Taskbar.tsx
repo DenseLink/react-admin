@@ -47,15 +47,39 @@ const StyledTaskbarEntries = styled.ol`
 `;
 
 const StyledTaskbarEntry = styled.li`
+  border-bottom: ${({ theme }) => `
+    ${theme.sizes.taskbar.entry.borderSize} solid ${theme.colors.highlight}
+  `};
   display: flex;
   height: 100%;
-  place-content: center;
-  place-items: center;
   max-width: 161px;
+  figure {
+    align-items: center;
+    display: flex;
+    figcaption {
+      color: ${({ theme }) => theme.colors.opaqueWhite};
+      font-size: ${({ theme }) => theme.sizes.taskbar.entry.fontSize};
+    }
+    img {
+      height: ${({ theme }) => theme.sizes.taskbar.entry.icon.size};
+      margin: ${({ theme }) => theme.sizes.taskbar.entry.icon.margin};
+      width: ${({ theme }) => theme.sizes.taskbar.entry.icon.size};
+    }
+  }
 `;
 
-const TaskbarEntry: React.FC = () => (
-  <StyledTaskbarEntry>PROCESS</StyledTaskbarEntry>
+type TaskbarEntryProps = {
+  icon: string;
+  title: string;
+};
+
+const TaskbarEntry = ({ icon, title }: TaskbarEntryProps): JSX.Element => (
+  <StyledTaskbarEntry>
+    <figure>
+      <img src={icon} alt={title} />
+      <figcaption>{title}</figcaption>
+    </figure>
+  </StyledTaskbarEntry>
 );
 
 const Clock: React.FC = () => (
@@ -70,7 +94,7 @@ const StartButton: React.FC = () => (
 
 const TaskbarEntries: React.FC = () => (
   <StyledTaskbarEntries>
-    <TaskbarEntry />
+    <TaskbarEntry icon="" title="" />
   </StyledTaskbarEntries>
 );
 
