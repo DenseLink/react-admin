@@ -2,6 +2,7 @@
 import type { FileSystemConfiguration } from 'browserfs';
 import { BFSRequire, configure } from 'browserfs';
 import type { FSModule } from 'browserfs/dist/node/core/FS';
+import publicFileSystemIndex from 'public.json';
 import { useEffect, useState } from 'react';
 
 // eslint-disable-next-line import/extensions
@@ -16,7 +17,21 @@ const initialFileSystemContextState: FileSystemContextState = {
 };
 
 const FileSystemConfig: FileSystemConfiguration = {
-  fs: 'IndexedDb'
+  fs: 'OverlayFS',
+  options: {
+    readable: {
+      fs: 'XmlHttpRequest',
+      options: {
+        index: publicFileSystemIndex
+      }
+    },
+    writable: {
+      fs: 'IndexedDB',
+      options: {
+        storeName: 'browser-fs-cache'
+      }
+    }
+  }
 };
 
 const useFileSystemContextState = (): FileSystemContextState => {
