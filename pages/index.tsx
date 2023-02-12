@@ -52,7 +52,7 @@ const StyledDesktop = styled.main`
 `;
 
 const useProcessContextState = (): ProcessContextState => {
-  const [processes] = useState({ Taskbar, HelloWorld });
+  const [processes] = useState<Processes>({ Taskbar, HelloWorld });
 
   return { processes };
 };
