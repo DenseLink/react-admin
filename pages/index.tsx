@@ -44,6 +44,7 @@ const ProcessProvider: React.FC = ({ children }) => (
 
 const StyledWindow = styled.section`
   background-color: ${({ theme }) => theme.colors.window};
+  position: absolute;
 `;
 const Window: FC = ({ children }) => <StyledWindow>{children}</StyledWindow>;
 const ProcessConsumer = Consumer;
