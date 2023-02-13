@@ -98,10 +98,12 @@ const StartButton: React.FC = () => (
 const TaskbarEntries: React.FC = () => (
   <StyledTaskbarEntries>
     <ProcessConsumer>
-      {({ processes }) =>
-        Object.entries(processes).map(([id, { icon, title }]) => (
-          <TaskbarEntry key={id} icon={icon} title={title} />
-        ))
+      {
+        ({ processes }) =>
+          Object.entries(processes).map(([id, { icon, title }]) => (
+            <TaskbarEntry key={id} icon={icon} title={title} />
+          ))
+        // eslint-disable-next-line react/jsx-curly-newline
       }
     </ProcessConsumer>
   </StyledTaskbarEntries>
