@@ -61,10 +61,7 @@ type SessionContextState = {
 const useSessionContextState = (): SessionContextState => {
   const [themeName, setThemeName] = useState('');
 
-  return {
-    themeName,
-    setThemeName
-  };
+  return { themeName, setThemeName };
 };
 
 const initialSessionContextState: SessionContextState = {
