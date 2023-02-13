@@ -18,6 +18,10 @@ export type Process = {
   title: string;
 };
 
+export type ProcessesMap = (
+  callback: ([id, process]: [string, Process]) => JSX.Element
+) => JSX.Element[];
+
 export type Processes = {
   [id: string]: Process;
 };
@@ -25,7 +29,7 @@ export type Processes = {
 export type ProcessContextState = {
   close: (id: string) => void;
   open: (id: string) => void;
-  processes: Processes;
+  mapProcesses: ProcessesMap;
 };
 
 export type SessionContextState = {
@@ -40,7 +44,7 @@ export const initialFileSystemContextState: FileSystemContextState = {
 export const initialProcessContextState: ProcessContextState = {
   close: () => undefined,
   open: () => undefined,
-  processes: {}
+  mapProcesses: () => []
 };
 
 export const initialSessionContextState: SessionContextState = {
@@ -65,10 +69,14 @@ export const openProcess = (processId: string) => (
 
 export const useProcessContextState = (): ProcessContextState => {
   const [processes, setProcesses] = useState<Processes>({});
+  const mapProcesses = useCallback<ProcessesMap>(
+    (callback) => Object.entries(processes).map(callback),
+    [processes]
+  );
   const close = useCallback((id: string) => setProcesses(closeProcess(id)), []);
   const open = useCallback((id: string) => setProcesses(openProcess(id)), []);
 
-  return { close, open, processes };
+  return { close, open, mapProcesses };
 };
 
 const { Consumer, Provider } = contextFactory<ProcessContextState>(
