@@ -119,6 +119,7 @@ const App = ({ Component, pageProps }: AppProps): React.ReactElement => (
           description={packageJson.name}
           title={packageJson.description}
         />
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Component {...pageProps} />
       </StyledApp>
     </SessionProvider>
