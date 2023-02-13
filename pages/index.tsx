@@ -1,22 +1,14 @@
-import dynamic from 'next/dynamic';
-import type { ComponentType, FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 // eslint-disable-next-line import/no-duplicates
 import { createContext } from 'react';
 // eslint-disable-next-line import/no-duplicates
 import styled from 'styled-components';
 
+import type { Process } from './contextFactory/process';
 // eslint-disable-next-line import/extensions
 import { useProcessContextState } from './contextFactory/process';
 // eslint-disable-next-line import/extensions
-import HelloWorld from './HelloWorld';
-// eslint-disable-next-line import/extensions
 import Taskbar from './Taskbar';
-
-type Process = {
-  Component: ComponentType;
-  // eslint-disable-next-line react/require-default-props
-  hasWindow?: boolean;
-};
 
 type Processes = {
   [id: string]: Process;
@@ -33,14 +25,6 @@ const initialProccessContextState = {
 const { Consumer, Provider } = createContext<ProcessContextState>(
   initialProccessContextState
 );
-
-const processDirectory: Processes = {
-  HelloWorld: {
-    // eslint-disable-next-line import/extensions
-    Component: dynamic(() => import('./HelloWorld')),
-    hasWindow: true
-  }
-};
 
 const StyledDesktop = styled.main`
   background-color: #ac898992;

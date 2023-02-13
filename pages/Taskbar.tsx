@@ -61,12 +61,12 @@ const StyledTaskbarEntry = styled.li`
     display: flex;
     figcaption {
       color: ${({ theme }) => theme.colors.opaqueWhite};
-      font-size: ${({ theme }) => '12px'};
+      font-size: ${'12px'};
     }
     img {
-      height: ${({ theme }) => '12px'};
-      margin: ${({ theme }) => '12px'};
-      width: ${({ theme }) => '12px'};
+      height: ${'12px'};
+      margin: ${'12px'};
+      width: ${'12px'};
     }
   }
 `;

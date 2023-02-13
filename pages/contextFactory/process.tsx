@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 // eslint-disable-next-line import/extensions
 import contextFactory from '../contextFactory';
+// eslint-disable-next-line import/extensions
+import HelloWorldProcess from '../HelloWorldProcess';
 
 export type FileSystemContextState = {
   fs: FSModule | null;
@@ -43,7 +45,7 @@ export const initialSessionContextState: SessionContextState = {
 };
 
 export const useProcessContextState = (): ProcessContextState => {
-  const [processes] = useState<Processes>({});
+  const [processes] = useState<Processes>({ HelloWorldProcess });
 
   return { processes };
 };
