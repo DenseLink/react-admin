@@ -58,7 +58,7 @@ const withWindow = (Component: React.ComponentType) => (
 const RenderProcess = ({ Component, hasWindow }: Process): JSX.Element =>
   hasWindow ? withWindow(Component) : <Component />;
 
-const ProcessLoader: FC = () => (
+const ProcessLoader = (): JSX.Element => (
   <ProcessConsumer>
     {
       ({ processes }) =>
