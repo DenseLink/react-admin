@@ -46,9 +46,17 @@ const useFileSystemContextState = (): FileSystemContextState => {
   return { fs };
 };
 
-const { Consumer, Provider } = contextFactory<FileSystemContextState>(
+const {
+  Consumer,
+  Provider,
+  useContext
+} = contextFactory<FileSystemContextState>(
   initialFileSystemContextState,
   useFileSystemContextState
 );
 
-export { Consumer as FileSystemConsumer, Provider as FileSystemProvider };
+export {
+  Consumer as FileSystemConsumer,
+  Provider as FileSystemProvider,
+  useContext as useFileSystem
+};

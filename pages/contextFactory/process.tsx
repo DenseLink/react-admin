@@ -79,9 +79,13 @@ export const useProcessContextState = (): ProcessContextState => {
   return { close, open, mapProcesses };
 };
 
-const { Consumer, Provider } = contextFactory<ProcessContextState>(
+const { Consumer, Provider, useContext } = contextFactory<ProcessContextState>(
   initialProcessContextState,
   useProcessContextState
 );
 
-export { Consumer as ProcessConsumer, Provider as ProcessProvider };
+export {
+  Consumer as ProcessConsumer,
+  Provider as ProcessProvider,
+  useContext as useProcesses
+};

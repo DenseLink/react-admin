@@ -72,14 +72,14 @@ const initialSessionContextState: SessionContextState = {
   setThemeName: () => undefined
 };
 
-const { Consumer, Provider } = contextFactory<SessionContextState>(
+const { Consumer, Provider, useContext } = contextFactory<SessionContextState>(
   initialSessionContextState,
   useSessionContextState
 );
 
-const SessionConsumer = Consumer;
-
-const SessionProvider = Provider;
+export const SessionConsumer = Consumer;
+export const SessionProvider = Provider;
+export const useSession = useContext;
 
 const StyledApp: FC = ({ children }) => (
   <>
