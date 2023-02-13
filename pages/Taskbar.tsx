@@ -15,6 +15,10 @@ const StyledClock = styled.time`
   position: absolute;
   right: 0;
   width: 76px;
+
+  &:hover {
+    background-color: hsla(0, 0%, 25%, 70%);
+  }
 `;
 
 const StyledStartButton = styled.button.attrs({
@@ -29,6 +33,13 @@ const StyledStartButton = styled.button.attrs({
   place-items: center;
   position: absolute;
   width: 36px;
+
+  &:hover {
+    background-color: hsla(0, 0%, 25%, 70%);
+    svg {
+      color: hsla(0, 0%, 25%, 70%);
+    }
+  }
 `;
 
 const StyledTaskbar = styled.nav`
@@ -64,10 +75,13 @@ const StyledTaskbarEntry = styled.li`
       font-size: ${'12px'};
     }
     img {
-      height: ${'12px'};
-      margin: ${'12px'};
-      width: ${'12px'};
+      height: 12px;
+      margin: 12px;
+      width: 12px;
     }
+  }
+  &:hover {
+    background-color: hsla(0, 0%, 25%, 70%);
   }
 `;
 
