@@ -55,14 +55,28 @@ const withWindow = (Component: React.ComponentType) => (
   </Window>
 );
 
-const RenderProcess = ({ Component, hasWindow }: Process): JSX.Element =>
+type RenderProcessProps = {
+  Component: React.ComponentType;
+  hasWindow: boolean;
+};
+
+const RenderProcess = ({
+  Component,
+  hasWindow
+}: RenderProcessProps): JSX.Element =>
   hasWindow ? withWindow(Component) : <Component />;
 
 const ProcessLoader = (): JSX.Element => (
   <ProcessConsumer>
     {
       ({ mapProcesses }) =>
-        mapProcesses(([id, process]) => <RenderProcess key={id} {...process} />)
+        mapProcesses(([id, { Component, hasWindow }]) => (
+          <RenderProcess
+            key={id}
+            Component={Component}
+            hasWindow={Boolean(hasWindow)}
+          />
+        ))
       // eslint-disable-next-line react/jsx-curly-newline
     }
   </ProcessConsumer>
