@@ -8,6 +8,8 @@ import type { Process } from './contextFactory/process';
 // eslint-disable-next-line import/extensions
 import { useProcessContextState } from './contextFactory/process';
 // eslint-disable-next-line import/extensions
+import FileManager from './FileManager/FileManager';
+// eslint-disable-next-line import/extensions
 import Taskbar from './Taskbar';
 
 type Processes = {
@@ -87,6 +89,7 @@ export default function Home(): ReactElement {
   return (
     <Desktop>
       <ProcessProvider>
+        <FileManager directory="/desktop" />
         <Taskbar />
         <ProcessLoader />
       </ProcessProvider>

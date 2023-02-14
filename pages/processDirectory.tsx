@@ -7,7 +7,7 @@ const processDirectory: Processes = {
     // eslint-disable-next-line import/extensions
     Component: dynamic(() => import('./HelloWorld')),
     hasWindow: true,
-    icon: '../public/favicon.ico',
+    icon: './favicon.ico',
     title: 'Hello World'
   }
 };
