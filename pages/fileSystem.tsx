@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 // eslint-disable-next-line import/extensions
 import contextFactory from './contextFactory';
 
-type FileSystemContextState = {
+export type FileSystemContextState = {
   fs: FSModule | null;
 };
 

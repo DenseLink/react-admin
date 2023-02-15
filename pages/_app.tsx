@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import type { Dispatch, FC, SetStateAction } from 'react';
+import type { FC, SetStateAction } from 'react';
 // eslint-disable-next-line import/no-duplicates
 import { useState } from 'react';
 // eslint-disable-next-line import/no-duplicates
@@ -53,7 +53,7 @@ const themes: Themes = { defaultTheme };
 
 type SessionContextState = {
   themeName: string;
-  setThemeName: Dispatch<SetStateAction<string>>;
+  setThemeName: React.Dispatch<SetStateAction<string>>;
 };
 
 const useSessionContextState = (): SessionContextState => {
