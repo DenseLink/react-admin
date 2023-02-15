@@ -50,12 +50,6 @@ const StyledWindow = styled.section`
 const Window: FC = ({ children }) => <StyledWindow>{children}</StyledWindow>;
 const ProcessConsumer = Consumer;
 
-const withWindow = (Component: React.ComponentType) => (
-  <Window>
-    <Component />
-  </Window>
-);
-
 type RenderProcessProps = {
   Component: React.ComponentType;
   hasWindow?: boolean;
@@ -65,7 +59,13 @@ const RenderProcess = ({
   Component,
   hasWindow = false
 }: RenderProcessProps): JSX.Element =>
-  hasWindow ? withWindow(Component) : <Component />;
+  hasWindow ? (
+    <Window>
+      <Component />
+    </Window>
+  ) : (
+    <Component />
+  );
 
 const ProcessLoader = (): JSX.Element => (
   <ProcessConsumer>
