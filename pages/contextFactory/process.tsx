@@ -15,6 +15,8 @@ export type Process = {
   Component: React.ComponentType;
   hasWindow?: boolean;
   icon: string;
+  maximize?: boolean;
+  minimize?: boolean;
   title: string;
 };
 
@@ -30,6 +32,8 @@ export type ProcessContextState = {
   close: (id: string) => void;
   open: (id: string) => void;
   mapProcesses: ProcessesMap;
+  maximize: (id: string) => void;
+  minimize: (id: string) => void;
 };
 
 export type SessionContextState = {
@@ -44,7 +48,9 @@ export const initialFileSystemContextState: FileSystemContextState = {
 export const initialProcessContextState: ProcessContextState = {
   close: () => undefined,
   open: () => undefined,
-  mapProcesses: () => []
+  mapProcesses: () => [],
+  maximize: () => undefined,
+  minimize: () => undefined
 };
 
 export const initialSessionContextState: SessionContextState = {
@@ -67,6 +73,28 @@ export const openProcess = (processId: string) => (
         [processId]: processDirectory[processId]
       };
 
+export const toggleProcessSetting = (
+  processId: string,
+  setting: 'maximize' | 'minimize'
+) => ({ [processId]: process, ...otherProcesses }: Processes): Processes =>
+  process
+    ? {
+        [processId]: {
+          ...process,
+          [setting]: !process[setting]
+        },
+        ...otherProcesses
+      }
+    : otherProcesses;
+
+export const maximizeProcess = (processId: string) => (
+  processes: Processes
+): Processes => toggleProcessSetting(processId, 'maximize')(processes);
+
+export const minimizeProcess = (processId: string) => (
+  processes: Processes
+): Processes => toggleProcessSetting(processId, 'minimize')(processes);
+
 export const useProcessContextState = (): ProcessContextState => {
   const [processes, setProcesses] = useState<Processes>({});
   const mapProcesses = useCallback<ProcessesMap>(
@@ -74,9 +102,17 @@ export const useProcessContextState = (): ProcessContextState => {
     [processes]
   );
   const close = useCallback((id: string) => setProcesses(closeProcess(id)), []);
+  const maximize = useCallback(
+    (id: string) => setProcesses(maximizeProcess(id)),
+    []
+  );
+  const minimize = useCallback(
+    (id: string) => setProcesses(minimizeProcess(id)),
+    []
+  );
   const open = useCallback((id: string) => setProcesses(openProcess(id)), []);
 
-  return { close, open, mapProcesses };
+  return { close, open, mapProcesses, maximize, minimize };
 };
 
 const { Consumer, Provider, useContext } = contextFactory<ProcessContextState>(
