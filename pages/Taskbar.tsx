@@ -20,10 +20,14 @@ const StyledClock = styled.time`
     background-color: hsla(0, 0%, 25%, 70%);
   }
 `;
-
-const StyledStartButton = styled.button.attrs({
+const Button = styled.button.attrs({
   type: 'button'
 })`
+  background-color: transparent;
+  font-family: inherit;
+`;
+
+const StyledStartButton = styled(Button)`
   color: #fff;
   display: flex;
   font-size: 19px;

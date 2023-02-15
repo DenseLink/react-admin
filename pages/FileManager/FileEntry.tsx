@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import styled from 'styled-components';
 
 // eslint-disable-next-line import/extensions
 import { useProcesses } from '../contextFactory/process';
@@ -12,6 +13,13 @@ type FileEntryProps = {
   path: string;
 };
 
+const Button = styled.button.attrs({
+  type: 'button'
+})`
+  background-color: transparent;
+  font-family: inherit;
+`;
+
 const FileEntry = ({ name, path }: FileEntryProps): JSX.Element => {
   const { icon, pid } = useFileInfo(path);
   const { open } = useProcesses();
@@ -19,12 +27,12 @@ const FileEntry = ({ name, path }: FileEntryProps): JSX.Element => {
 
   return (
     <StyledFileEntry>
-      <button type="button" onClick={onActivate} onKeyDown={onActivate}>
+      <Button onClick={onActivate} onKeyDown={onActivate}>
         <figure>
           <img src={icon} alt={name} />
           <figcaption>{name}</figcaption>
         </figure>
-      </button>
+      </Button>
     </StyledFileEntry>
   );
 };

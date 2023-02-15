@@ -26,10 +26,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     user-select: none;
   }
-  button {
-    background-color: transparent;
-    font-family: inherit;
-  }
   ol,
   ul {
     list-style: none;
