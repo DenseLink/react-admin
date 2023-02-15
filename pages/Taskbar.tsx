@@ -1,5 +1,3 @@
-import { faWindows } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 
 // eslint-disable-next-line import/extensions
@@ -28,20 +26,21 @@ const Button = styled.button.attrs({
 `;
 
 const StyledStartButton = styled(Button)`
-  color: #fff;
+  fill: #fff;
   display: flex;
-  font-size: 19px;
   height: 100%;
   left: 0;
   place-content: center;
   place-items: center;
   position: absolute;
   width: 36px;
-
+  svg {
+    height: 19px;
+  }
   &:hover {
     background-color: hsla(0, 0%, 25%, 70%);
     svg {
-      color: hsla(0, 0%, 25%, 70%);
+      fill: hsla(0, 0%, 25%, 70%);
     }
   }
 `;
@@ -107,9 +106,15 @@ const Clock: React.FC = () => (
   <StyledClock dateTime="23:17:22">11:17:22 PM</StyledClock>
 );
 
+export const WindowsIcon = (): JSX.Element => (
+  <svg viewBox="0 0 448 512">
+    <path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z" />
+  </svg>
+);
+
 const StartButton: React.FC = () => (
   <StyledStartButton title="Start">
-    <FontAwesomeIcon icon={faWindows} />
+    <WindowsIcon />
   </StyledStartButton>
 );
 
