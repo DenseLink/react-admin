@@ -1,16 +1,16 @@
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
-import type { FC, SetStateAction } from 'react';
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import type { FC, SetStateAction } from "react";
 // eslint-disable-next-line import/no-duplicates
-import { useState } from 'react';
+import { useState } from "react";
 // eslint-disable-next-line import/no-duplicates
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 
-import packageJson from '../package.json';
+import packageJson from "../package.json";
 // eslint-disable-next-line import/extensions
-import contextFactory from './contextFactory';
+import contextFactory from "./contextFactory";
 // eslint-disable-next-line import/extensions
-import { FileSystemProvider } from './fileSystem';
+import { FileSystemProvider } from "./fileSystem";
 
 const GlobalStyle = createGlobalStyle`
    *,
@@ -34,9 +34,9 @@ const GlobalStyle = createGlobalStyle`
 
 const defaultTheme = {
   colors: {
-    primary: '#2e248d',
-    window: '#808080'
-  }
+    primary: "#2e248d",
+    window: "#808080",
+  },
 };
 
 type DefaultTheme = {
@@ -45,26 +45,24 @@ type DefaultTheme = {
   };
 };
 
-type Themes = {
-  [key: string]: DefaultTheme;
-};
+type Themes = Record<string, DefaultTheme>;
 
 const themes: Themes = { defaultTheme };
 
 type SessionContextState = {
-  themeName: string;
   setThemeName: React.Dispatch<SetStateAction<string>>;
+  themeName: string;
 };
 
 const useSessionContextState = (): SessionContextState => {
-  const [themeName, setThemeName] = useState('');
+  const [themeName, setThemeName] = useState("");
 
-  return { themeName, setThemeName };
+  return { setThemeName, themeName };
 };
 
 const initialSessionContextState: SessionContextState = {
-  themeName: '',
-  setThemeName: () => undefined
+  setThemeName: () => {},
+  themeName: "",
 };
 
 const { Consumer, Provider, useContext } = contextFactory<SessionContextState>(
@@ -77,21 +75,19 @@ export const SessionProvider = Provider;
 export const useSession = useContext;
 
 const StyledApp: FC = ({ children }) => (
-  <>
-    <SessionConsumer>
-      {({ themeName }) => (
-        <ThemeProvider theme={themes[themeName] || themes.defaultTheme}>
-          <GlobalStyle />
-          {children}
-        </ThemeProvider>
-      )}
-    </SessionConsumer>
-  </>
+  <SessionConsumer>
+    {({ themeName }) => (
+      <ThemeProvider theme={themes[themeName] || themes.defaultTheme}>
+        <GlobalStyle />
+        {children}
+      </ThemeProvider>
+    )}
+  </SessionConsumer>
 );
 
 StyledApp.defaultProps = {
   // eslint-disable-next-line react/default-props-match-prop-types
-  theme: themes.default
+  theme: themes.default,
 };
 
 type MetadataProps = {
@@ -101,7 +97,7 @@ type MetadataProps = {
 
 const Metadata: FC<MetadataProps> = ({ description, title }) => (
   <Head>
-    <meta name="description" content={description} />
+    <meta content={description} name="description" />
     <title>{title}</title>
   </Head>
 );
