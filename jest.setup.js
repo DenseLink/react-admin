@@ -1,5 +1,4 @@
-import preloadAll from 'jest-next-dynamic';
-
-beforeAll(async () => {
-  await preloadAll();
+module.exports = require('next/jest')()({
+  moduleDirectories: ['<rootDir>', 'node_modules'],
+  testEnvironment: 'jest-environment-jsdom'
 });

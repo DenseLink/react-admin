@@ -1,4 +1,6 @@
+.git
 .next
+.swc
+.vscode
 node_modules
 out
-public
