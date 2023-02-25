@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/extensions
+import { FileSystemProvider } from "contexts/fileSystem";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import type { FC, SetStateAction } from "react";
@@ -6,11 +8,9 @@ import { useState } from "react";
 // eslint-disable-next-line import/no-duplicates
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
+// eslint-disable-next-line import/extensions
+import contextFactory from "../contexts/contextFactory";
 import packageJson from "../package.json";
-// eslint-disable-next-line import/extensions
-import contextFactory from "./contextFactory";
-// eslint-disable-next-line import/extensions
-import { FileSystemProvider } from "./fileSystem";
 
 const GlobalStyle = createGlobalStyle`
    *,

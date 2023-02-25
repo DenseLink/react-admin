@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
-
 // eslint-disable-next-line import/extensions
-import { useFileSystem } from '../fileSystem';
+import { useFileSystem } from "contexts/fileSystem";
+import { useEffect, useState } from "react";
 
 const useFiles = (
   directory: string,

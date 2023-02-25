@@ -1,16 +1,16 @@
+// eslint-disable-next-line import/extensions
+// eslint-disable-next-line import/extensions
+import FileManager from "contexts/FileManager/FileManager";
+import Taskbar from "contexts/taskbar/Taskbar";
 import type { FC, ReactElement } from "react";
 // eslint-disable-next-line import/no-duplicates
 import { createContext } from "react";
 // eslint-disable-next-line import/no-duplicates
 import styled from "styled-components";
 
-import type { Process } from "./contextFactory/process";
+import type { Process } from "../contexts/contextFactory/process";
 // eslint-disable-next-line import/extensions
-import { useProcessContextState } from "./contextFactory/process";
-// eslint-disable-next-line import/extensions
-import FileManager from "./FileManager/FileManager";
-// eslint-disable-next-line import/extensions
-import Taskbar from "./taskbar/Taskbar";
+import { useProcessContextState } from "../contexts/contextFactory/process";
 
 type Processes = Record<string, Process>;
 

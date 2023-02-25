@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/extensions
-import type { FSModule } from 'browserfs/dist/node/core/FS';
-import { useCallback, useState } from 'react';
+import type { FSModule } from "browserfs/dist/node/core/FS";
+import { useCallback, useState } from "react";
 
 // eslint-disable-next-line import/extensions
-import contextFactory from '../contextFactory';
+import contextFactory from "../contextFactory";
 // eslint-disable-next-line import/extensions
-import processDirectory from '../processDirectory';
+import processDirectory from "../processDirectory";
 
 export type FileSystemContextState = {
   fs: FSModule | null;
@@ -24,76 +24,78 @@ export type ProcessesMap = (
   callback: ([id, process]: [string, Process]) => JSX.Element
 ) => JSX.Element[];
 
-export type Processes = {
-  [id: string]: Process;
-};
+export type Processes = Record<string, Process>;
 
 export type ProcessContextState = {
   close: (id: string) => void;
-  open: (id: string) => void;
   mapProcesses: ProcessesMap;
   maximize: (id: string) => void;
   minimize: (id: string) => void;
+  open: (id: string) => void;
 };
 
 export type SessionContextState = {
-  themeName: string;
   setThemeName: React.Dispatch<React.SetStateAction<string>>;
+  themeName: string;
 };
 
 export const initialFileSystemContextState: FileSystemContextState = {
-  fs: null
+  fs: null,
 };
 
 export const initialProcessContextState: ProcessContextState = {
-  close: () => undefined,
-  open: () => undefined,
+  close: () => {},
   mapProcesses: () => [],
-  maximize: () => undefined,
-  minimize: () => undefined
+  maximize: () => {},
+  minimize: () => {},
+  open: () => {},
 };
 
 export const initialSessionContextState: SessionContextState = {
-  themeName: '',
-  setThemeName: () => undefined
+  setThemeName: () => {},
+  themeName: "",
 };
 
-export const closeProcess = (processId: string) => ({
-  [processId]: _closedProcess,
-  ...remainingProcesses
-}: Processes): Processes => remainingProcesses;
+export const closeProcess =
+  (processId: string) =>
+  ({
+    [processId]: _closedProcess,
+    ...remainingProcesses
+  }: Processes): Processes =>
+    remainingProcesses;
 
-export const openProcess = (processId: string) => (
-  currentProcesses: Processes
-): Processes =>
-  currentProcesses[processId] || !processDirectory[processId]
-    ? currentProcesses
-    : {
-        ...currentProcesses,
-        [processId]: processDirectory[processId]
-      };
+export const openProcess =
+  (processId: string) =>
+  (currentProcesses: Processes): Processes =>
+    currentProcesses[processId] || !processDirectory[processId]
+      ? currentProcesses
+      : {
+          ...currentProcesses,
+          [processId]: processDirectory[processId],
+        };
 
-export const toggleProcessSetting = (
-  processId: string,
-  setting: 'maximize' | 'minimize'
-) => ({ [processId]: process, ...otherProcesses }: Processes): Processes =>
-  process
-    ? {
-        [processId]: {
-          ...process,
-          [setting]: !process[setting]
-        },
-        ...otherProcesses
-      }
-    : otherProcesses;
+export const toggleProcessSetting =
+  (processId: string, setting: "maximize" | "minimize") =>
+  ({ [processId]: process, ...otherProcesses }: Processes): Processes =>
+    process
+      ? {
+          [processId]: {
+            ...process,
+            [setting]: !process[setting],
+          },
+          ...otherProcesses,
+        }
+      : otherProcesses;
 
-export const maximizeProcess = (processId: string) => (
-  processes: Processes
-): Processes => toggleProcessSetting(processId, 'maximize')(processes);
+export const maximizeProcess =
+  (processId: string) =>
+  (processes: Processes): Processes =>
+    toggleProcessSetting(processId, "maximize")(processes);
 
-export const minimizeProcess = (processId: string) => (
-  processes: Processes
-): Processes => toggleProcessSetting(processId, 'minimize')(processes);
+export const minimizeProcess =
+  (processId: string) =>
+  (processes: Processes): Processes =>
+    toggleProcessSetting(processId, "minimize")(processes);
 
 export const useProcessContextState = (): ProcessContextState => {
   const [processes, setProcesses] = useState<Processes>({});
@@ -112,7 +114,7 @@ export const useProcessContextState = (): ProcessContextState => {
   );
   const open = useCallback((id: string) => setProcesses(openProcess(id)), []);
 
-  return { close, open, mapProcesses, maximize, minimize };
+  return { close, mapProcesses, maximize, minimize, open };
 };
 
 const { Consumer, Provider, useContext } = contextFactory<ProcessContextState>(
@@ -123,5 +125,5 @@ const { Consumer, Provider, useContext } = contextFactory<ProcessContextState>(
 export {
   Consumer as ProcessConsumer,
   Provider as ProcessProvider,
-  useContext as useProcesses
+  useContext as useProcesses,
 };

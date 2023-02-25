@@ -1,12 +1,12 @@
-import { useCallback, useRef } from 'react';
-import styled from 'styled-components';
+// eslint-disable-next-line import/extensions
+// eslint-disable-next-line import/extensions
+import { useProcesses } from "contexts/contextFactory/process";
+import useFileInfo from "contexts/useFileInfo";
+import { useCallback, useRef } from "react";
+import styled from "styled-components";
 
 // eslint-disable-next-line import/extensions
-import { useProcesses } from '../contextFactory/process';
-// eslint-disable-next-line import/extensions
-import useFileInfo from '../useFileInfo';
-// eslint-disable-next-line import/extensions
-import StyledFileEntry from './StyledFileEntry';
+import StyledFileEntry from "./StyledFileEntry";
 
 type FileEntryProps = {
   name: string;
@@ -14,7 +14,7 @@ type FileEntryProps = {
 };
 
 const Button = styled.button.attrs({
-  type: 'button'
+  type: "button",
 })`
   background-color: transparent;
   font-family: inherit;
@@ -27,22 +27,20 @@ type DoubleClick = (
 
 const useDoubleClick: DoubleClick = (handler, timeout = 500) => {
   const timer = useRef<NodeJS.Timeout | null>(null);
-  const onClick = useCallback<React.MouseEventHandler>(
+  return useCallback<React.MouseEventHandler>(
     (event) => {
-      if (!timer.current) {
-        timer.current = setTimeout(() => {
-          timer.current = null;
-        }, timeout);
-      } else {
+      if (timer.current) {
         clearTimeout(timer.current);
         handler(event);
         timer.current = null;
+      } else {
+        timer.current = setTimeout(() => {
+          timer.current = null;
+        }, timeout);
       }
     },
     [handler, timeout]
   );
-
-  return onClick;
 };
 
 const FileEntry = ({ name, path }: FileEntryProps): JSX.Element => {
@@ -54,7 +52,7 @@ const FileEntry = ({ name, path }: FileEntryProps): JSX.Element => {
     <StyledFileEntry>
       <Button onClick={useDoubleClick(onClick)}>
         <figure>
-          <img src={icon} alt={name} />
+          <img alt={name} src={icon} />
           <figcaption>{name}</figcaption>
         </figure>
       </Button>

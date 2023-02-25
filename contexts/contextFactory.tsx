@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext } from "react";
 
 type ContextFactory = <T>(
   initialContextState: T,
@@ -21,7 +21,7 @@ const contextFactory: ContextFactory = (
   return {
     Consumer: Context.Consumer,
     Provider: ProcessProvider,
-    useContext: () => useContext(Context)
+    useContext: () => useContext(Context),
   };
 };
 
