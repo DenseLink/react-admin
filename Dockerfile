@@ -4,7 +4,7 @@ ENV NODE_OPTIONS=--openssl-legacy-provider
 
 RUN apk add --no-cache git
 
-WORKDIR test
+WORKDIR daedalOS
 COPY . .
 
 RUN yarn

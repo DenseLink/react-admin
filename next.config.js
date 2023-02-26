@@ -1,12 +1,12 @@
 // @ts-check
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === "production";
 
 const bundleAnalyzer = process.env.npm_config_argv?.includes(
-  'build:bundle-analyzer'
+  "build:bundle-analyzer"
 );
 
-const webpack = require('webpack');
+const webpack = require("webpack");
 
 /**
  * @type {import("next").NextConfig}
@@ -18,15 +18,15 @@ const nextConfig = {
     styledComponents: {
       displayName: !isProduction,
       minify: isProduction,
-      pure: true
-    }
+      pure: true,
+    },
   },
   devIndicators: {
-    buildActivityPosition: 'top-right'
+    buildActivityPosition: "top-right",
   },
   experimental: {
     legacyBrowsers: false,
-    swcFileReading: true
+    swcFileReading: true,
   },
   optimizeFonts: false,
   productionBrowserSourceMaps: false,
@@ -35,14 +35,14 @@ const nextConfig = {
   webpack: (config) => {
     config.plugins.push(
       new webpack.NormalModuleReplacementPlugin(/node:/, (resource) => {
-        const mod = resource.request.replace(/^node:/, '');
+        const mod = resource.request.replace(/^node:/, "");
 
         switch (mod) {
-          case 'buffer':
-            resource.request = 'buffer';
+          case "buffer":
+            resource.request = "buffer";
             break;
-          case 'stream':
-            resource.request = 'readable-stream';
+          case "stream":
+            resource.request = "readable-stream";
             break;
           default:
             throw new Error(`Not found ${mod}`);
@@ -51,11 +51,11 @@ const nextConfig = {
     );
 
     return config;
-  }
+  },
 };
 
 module.exports = bundleAnalyzer
-  ? require('@next/bundle-analyzer')({
-      enabled: isProduction
+  ? require("@next/bundle-analyzer")({
+      enabled: isProduction,
     })(nextConfig)
   : nextConfig;
