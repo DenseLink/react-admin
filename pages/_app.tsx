@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/extensions
-import { FileSystemProvider } from "contexts/fileSystem";
+import { FileSystemProvider } from "contexts/fileSystem/index";
 import { ProcessProvider } from "contexts/process";
 import type { AppProps } from "next/app";
 import Head from "next/head";
