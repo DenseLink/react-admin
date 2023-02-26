@@ -1,4 +1,3 @@
-import type { FC } from "react";
 import { createContext, memo, useContext } from "react";
 
 const contextFactory = <T,>(

@@ -49,7 +49,6 @@ const IDX_UID = 0;
 const IDX_GID = 0;
 // eslint-disable-next-line unicorn/no-null
 const FILE_ENTRY = null;
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 const fsroot = index.fsroot as FS9PV4[];
 
 export const get9pModifiedTime = (path: string): number => {
@@ -108,11 +107,9 @@ const parse9pV4ToV3 = (fs9p: FS9PV4[], path = "/"): FS9PV3[] =>
   });
 
 export const fs9pV4ToV3 = (): FS9P =>
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   index.version === 4
     ? {
         fsroot: parse9pV4ToV3(fsroot),
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
         size: index.size,
         version: 3,
       }
