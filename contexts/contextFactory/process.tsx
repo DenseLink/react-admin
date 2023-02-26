@@ -3,9 +3,9 @@ import type { FSModule } from "browserfs/dist/node/core/FS";
 import { useCallback, useState } from "react";
 
 // eslint-disable-next-line import/extensions
-import contextFactory from "../contextFactory";
-// eslint-disable-next-line import/extensions
 import processDirectory from "../processDirectory";
+// eslint-disable-next-line import/extensions
+import contextFactory from "./contextFactory";
 
 export type FileSystemContextState = {
   fs: FSModule | null;

@@ -1,37 +1,37 @@
 // eslint-disable-next-line import/extensions
-import type { FileSystemConfiguration } from 'browserfs';
-import { BFSRequire, configure } from 'browserfs';
-import type { FSModule } from 'browserfs/dist/node/core/FS';
-import publicFileSystemIndex from 'public.json';
-import { useEffect, useState } from 'react';
+import type { FileSystemConfiguration } from "browserfs";
+import { BFSRequire, configure } from "browserfs";
+import type { FSModule } from "browserfs/dist/node/core/FS";
+import publicFileSystemIndex from "public.json";
+import { useEffect, useState } from "react";
 
 // eslint-disable-next-line import/extensions
-import contextFactory from './contextFactory';
+import contextFactory from "./contextFactory/contextFactory";
 
 export type FileSystemContextState = {
   fs: FSModule | null;
 };
 
 const initialFileSystemContextState: FileSystemContextState = {
-  fs: null
+  fs: null,
 };
 
 const FileSystemConfig: FileSystemConfiguration = {
-  fs: 'OverlayFS',
+  fs: "OverlayFS",
   options: {
     readable: {
-      fs: 'XmlHttpRequest',
+      fs: "XmlHttpRequest",
       options: {
-        index: publicFileSystemIndex
-      }
+        index: publicFileSystemIndex,
+      },
     },
     writable: {
-      fs: 'IndexedDB',
+      fs: "IndexedDB",
       options: {
-        storeName: 'browser-fs-cache'
-      }
-    }
-  }
+        storeName: "browser-fs-cache",
+      },
+    },
+  },
 };
 
 const useFileSystemContextState = (): FileSystemContextState => {
@@ -39,24 +39,21 @@ const useFileSystemContextState = (): FileSystemContextState => {
 
   useEffect(() => {
     if (!fs) {
-      configure(FileSystemConfig, () => setFs(BFSRequire('fs')));
+      configure(FileSystemConfig, () => setFs(BFSRequire("fs")));
     }
   }, [fs]);
 
   return { fs };
 };
 
-const {
-  Consumer,
-  Provider,
-  useContext
-} = contextFactory<FileSystemContextState>(
-  initialFileSystemContextState,
-  useFileSystemContextState
-);
+const { Consumer, Provider, useContext } =
+  contextFactory<FileSystemContextState>(
+    initialFileSystemContextState,
+    useFileSystemContextState
+  );
 
 export {
   Consumer as FileSystemConsumer,
   Provider as FileSystemProvider,
-  useContext as useFileSystem
+  useContext as useFileSystem,
 };

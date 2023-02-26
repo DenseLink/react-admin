@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/extensions
 import { FileSystemProvider } from "contexts/fileSystem";
+import { ProcessProvider } from "contexts/process";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import type { FC, SetStateAction } from "react";
@@ -9,7 +10,7 @@ import { useState } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 // eslint-disable-next-line import/extensions
-import contextFactory from "../contexts/contextFactory";
+import contextFactory from "../contexts/contextFactory/contextFactory";
 import packageJson from "../package.json";
 
 const GlobalStyle = createGlobalStyle`
@@ -103,17 +104,19 @@ const Metadata: FC<MetadataProps> = ({ description, title }) => (
 );
 
 const App = ({ Component, pageProps }: AppProps): React.ReactElement => (
-  <FileSystemProvider>
-    <SessionProvider>
-      <StyledApp>
-        <Metadata
-          description={packageJson.name}
-          title={packageJson.description}
-        />
-        <Component {...pageProps} />
-      </StyledApp>
-    </SessionProvider>
-  </FileSystemProvider>
+  <ProcessProvider>
+    <FileSystemProvider>
+      <SessionProvider>
+        <StyledApp>
+          <Metadata
+            description={packageJson.name}
+            title={packageJson.description}
+          />
+          <Component {...pageProps} />
+        </StyledApp>
+      </SessionProvider>
+    </FileSystemProvider>
+  </ProcessProvider>
 );
 
 export default App;

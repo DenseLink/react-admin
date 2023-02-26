@@ -1,38 +1,49 @@
-import type { DocumentContext, DocumentInitialProps } from 'next/document';
-import Document from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import type { DocumentContext, DocumentInitialProps } from "next/document";
+import NextDocument, { Head, Html, Main, NextScript } from "next/document";
+import { ServerStyleSheet } from "styled-components";
+import { DEFAULT_LOCALE } from "utils/constants";
 
 const withStyledComponents = async (
   ctx: DocumentContext
 ): Promise<DocumentInitialProps> => {
-  const originalRenderPage = ctx.renderPage;
+  const { renderPage } = ctx;
   const sheet = new ServerStyleSheet();
 
   try {
     ctx.renderPage = () =>
-      originalRenderPage({
-        enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />)
+      renderPage({
+        enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
       });
 
-    const { styles, ...initialProps } = await Document.getInitialProps(ctx);
+    const { styles, ...initialProps } = await NextDocument.getInitialProps(ctx);
 
     return {
       ...initialProps,
-      styles: [styles, sheet.getStyleElement()]
+      styles: [styles, sheet.getStyleElement()],
     };
   } finally {
     sheet.seal();
   }
 };
-// The code above is the default requirements for next to run. It has been
-// modified to function as a return for code simplicity
 
-class MyDocument extends Document {
-  static async getInitialProps(
+class Document extends NextDocument {
+  public static async getInitialProps(
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
     return withStyledComponents(ctx);
   }
+
+  public render(): JSX.Element {
+    return (
+      <Html lang={DEFAULT_LOCALE}>
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
 }
 
-export default MyDocument;
+export default Document;
