@@ -10,6 +10,7 @@ const TextArea = styled.textarea`
   outline: none;
   padding: 10px;
   font-family: Arial, sans-serif;
+  background-color: #2688ca;
 `;
 
 const Button = styled.button`
