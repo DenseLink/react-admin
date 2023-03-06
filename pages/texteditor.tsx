@@ -2,15 +2,23 @@ import type React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  height: 100vh;
+`;
+
 const TextArea = styled.textarea`
   font-size: 16px;
-  width: 100%;
+  width: 80%;
   height: 300px;
   border: none;
   outline: none;
   padding: 10px;
   font-family: Arial, sans-serif;
   background-color: #2688ca;
+  align-items: center;
 `;
 
 const Button = styled.button`
@@ -51,7 +59,9 @@ const TextEditor: React.FC = () => {
         <Button onClick={handleItalic}>Italic</Button>
         <Button onClick={handleUnderline}>Underline</Button>
       </div>
-      <TextArea onChange={(e) => setText(e.target.value)} value={text} />
+      <Container>
+        <TextArea onChange={(e) => setText(e.target.value)} value={text} />
+      </Container>
     </>
   );
 };
