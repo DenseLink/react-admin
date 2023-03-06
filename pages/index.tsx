@@ -1,22 +1,13 @@
-import AppsLoader from "components/system/Apps/AppsLoader";
-import Desktop from "components/system/Desktop";
-import Taskbar from "components/system/Taskbar";
-import useGlobalErrorHandler from "hooks/useGlobalErrorHandler";
-import useGlobalKeyboardShortcuts from "hooks/useGlobalKeyboardShortcuts";
-import useIFrameFocuser from "hooks/useIFrameFocuser";
-import useUrlLoader from "hooks/useUrlLoader";
+import type React from "react";
+
+import TextEditor from "./texteditor";
 
 const Index = (): React.ReactElement => {
-  useIFrameFocuser();
-  useUrlLoader();
-  useGlobalKeyboardShortcuts();
-  useGlobalErrorHandler();
-
   return (
-    <Desktop>
-      <Taskbar />
-      <AppsLoader />
-    </Desktop>
+    <>
+      <p>hello world</p>;
+      <TextEditor />;
+    </>
   );
 };
 
