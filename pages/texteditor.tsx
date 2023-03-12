@@ -33,7 +33,7 @@ const Button = styled.button`
   margin-right: 10px;
 
   &:hover {
-    background-color: #ddd;
+    background-color: #f73c3c;
   }
 `;
 
