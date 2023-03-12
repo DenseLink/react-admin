@@ -7,22 +7,12 @@
     "type": "git"
   },
   "scripts": {
-    "build": "yarn build:prebuild && next build",
-    "build:bundle-analyzer": "yarn build",
-    "build:fs": "node scripts/fs2json.js --exclude .index --out public/.index/fs.9p.json ./public && node scripts/preloadIcons.js",
-    "build:html": "node scripts/minifyHtml.js",
-    "build:js": "node scripts/minifyJs.js",
-    "build:prebuild": "yarn build:fs && yarn build:search",
-    "build:robots": "node scripts/robots.js",
-    "build:search": "node scripts/searchIndex.js",
-    "deploy": "yarn build:robots && next export && yarn build:html && yarn build:js",
-    "docker:build": "docker build -t daedalos .",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
     "docker:run": "docker run -dp 3000:3000 --rm --name daedalos daedalos",
-    "dev": "next dev",
     "eslint": "eslint --report-unused-disable-directives .",
-    "export": "next export",
     "prettier": "prettier --write .",
-    "start": "next build && next start",
     "stylelint": "stylelint --formatter=verbose **/*.ts*",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -70,7 +60,13 @@
     "rtf.js": "^3.0.9",
     "styled-components": "^5.3.6",
     "utif": "https://github.com/photopea/UTIF.js",
-    "wasi-js": "^1.7.3"
+    "wasi-js": "^1.7.3",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react-router-dom": "^6.9.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   },
   "devDependencies": {
     "7z-wasm": "^1.0.1",
@@ -129,5 +125,17 @@
     "webamp": "^1.5.0",
     "xlsx": "^0.18.5",
     "xterm": "^5.1.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
