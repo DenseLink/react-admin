@@ -9,7 +9,7 @@ import {
   SideBtnWrap,
 } from "./SideBarStyles";
 
-const index = ({ isOpen, toggle }) => {
+const index = ({ isOpen, toggle }): JSX.Element => {
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
       <Icon onClick={toggle}>

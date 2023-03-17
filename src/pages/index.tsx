@@ -4,10 +4,10 @@ import Navbar from "src/components/Navbar";
 import HeroSection from "../components/HeroSection";
 import Sidebar from "../components/Sidebar";
 
-const Home = () => {
+const Home = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => {
+  const toggle = (): void => {
     setIsOpen(!isOpen);
   };
 
