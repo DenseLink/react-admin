@@ -12,12 +12,12 @@ import {
   NavMenu,
 } from "./NavbarStyles";
 
-const Navbar = (): JSX.Element => {
+const Navbar = ({ toggle }): JSX.Element => {
   return (
     <Nav>
       <NavbarContainer>
         <NavLogo to="/">dolla</NavLogo>
-        <MobileIcon>
+        <MobileIcon onClick={toggle}>
           <FaBars />
         </MobileIcon>
         <NavMenu>

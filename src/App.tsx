@@ -2,12 +2,13 @@ import "./App.css";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
+// eslint-disable-next-line import/extensions
+import Home from "./pages";
 
 const App = (): JSX.Element => {
   return (
     <Router>
-      <Navbar />
+      <Home />
     </Router>
   );
 };
