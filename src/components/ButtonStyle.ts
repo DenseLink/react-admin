@@ -1,7 +1,14 @@
 import { Link } from "react-scroll";
 import styled from "styled-components";
 
-export const Button = styled(Link)`
+interface ButtonProps {
+  big?: boolean;
+  dark?: boolean;
+  fontBig?: boolean;
+  primary?: boolean;
+}
+
+export const Button = styled(Link)<ButtonProps>`
   border-radius: 50px;
   background: ${({ primary }) => (primary ? "#01BF71" : "#010606")};
   white-space: nowrap;
@@ -11,7 +18,7 @@ export const Button = styled(Link)`
   outline: none;
   border: none;
   cursor: pointer;
-  dispaly: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
