@@ -2,9 +2,9 @@ export const homeObjOne = {
   alt: "car",
   buttonLabel: "Get started",
   dark: true,
+  darkText: false,
   description:
     "Get access to our exclusive app that allows you to send unlimited transactions whitout getting charged any fees.",
-  darkText: false,
   headline: "Unlimited Transactions with zero fees",
   id: "about",
   img: "/images/svg-1.svg",
@@ -20,9 +20,9 @@ export const homeObjTwo = {
   alt: "Piggybanck",
   buttonLabel: "Learn More",
   dark: false,
-  description:
-    "Get access to our exclusive app that allows you to send unlimited transactions whitout getting charged any fees.",
   darkText: true,
+  description:
+    "Gedt access to our exclusive app that allows you to send unlimited transactions whitout getting charged any fees.",
   headline: "Login to your account at any time",
   id: "discover",
   img: "/images/svg-4.svg",
@@ -39,7 +39,7 @@ export const homeObjThree = {
   buttonLabel: "Start Now",
   darkText: true,
   description:
-    "Get access to our exclusive app that allows you to send unlimited transactions whitout getting charged any fees.",
+    "Get access tdo our exclusive app that allows you to send unlimited transactions whitout getting charged any fees.",
   headline: "Creating an account is extremely easy",
   id: "signup",
   img: "/images/svg-3.svg",

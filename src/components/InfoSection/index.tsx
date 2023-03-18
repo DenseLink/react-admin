@@ -12,7 +12,23 @@ import {
   Subtitle,
   TextWrapper,
   TopLine,
-} from "./InfoSectionStyled";
+} from "./InfoSectionStyles";
+
+type InfoSectionProps = {
+  alt: string;
+  buttonLabel: string;
+  dark: boolean | number | undefined;
+  darkText: boolean;
+  description: string;
+  headline: string;
+  id: string;
+  img: string;
+  imgStart: boolean;
+  lightBg: boolean;
+  lightText: boolean;
+  primary: boolean | number | undefined;
+  topLine: string;
+};
 
 const InfoSection = ({
   lightBg,
@@ -28,8 +44,7 @@ const InfoSection = ({
   img,
   primary,
   dark,
-  dark2,
-}) => {
+}: InfoSectionProps): JSX.Element => {
   return (
     <InfoContainer id={id} lightBg={lightBg}>
       <InfoWrapper>
@@ -42,9 +57,7 @@ const InfoSection = ({
               <BtnWrap>
                 <Button
                   dark={dark ? 1 : 0}
-                  dark2={dark2 ? 1 : 0}
                   duration={500}
-                  exact="true"
                   offset={-80}
                   primary={primary ? 1 : 0}
                   to="home"

@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 interface ButtonProps {
   big?: boolean;
-  dark?: boolean;
+  dark?: boolean | number | undefined;
   fontBig?: boolean;
-  primary?: boolean;
+  primary?: boolean | number | undefined;
 }
 
 export const Button = styled(Link)<ButtonProps>`
