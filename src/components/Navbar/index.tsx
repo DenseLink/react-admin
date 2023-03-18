@@ -12,12 +12,21 @@ import {
   NavMenu,
 } from "./NavbarStyles";
 
-const Navbar = ({ toggle }): JSX.Element => {
+type NavbarProps = {
+  toggle: boolean;
+};
+
+const Navbar = ({ toggle }: NavbarProps): JSX.Element => {
+  const handleClickFunction = (): void => {
+    // eslint-disable-next-line no-param-reassign
+    toggle = !toggle;
+  };
+
   return (
     <Nav>
       <NavbarContainer>
         <NavLogo to="/">dolla</NavLogo>
-        <MobileIcon onClick={toggle}>
+        <MobileIcon onClick={handleClickFunction}>
           <FaBars />
         </MobileIcon>
         <NavMenu>
