@@ -13,13 +13,13 @@ import {
 } from "./NavbarStyles";
 
 type NavbarProps = {
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
   toggle: boolean;
 };
 
-const Navbar = ({ toggle }: NavbarProps): JSX.Element => {
+const Navbar = ({ toggle, setToggle }: NavbarProps): JSX.Element => {
   const handleClickFunction = (): void => {
-    // eslint-disable-next-line no-param-reassign
-    toggle = !toggle;
+    setToggle(!toggle);
   };
 
   return (

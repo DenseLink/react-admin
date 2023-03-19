@@ -9,27 +9,37 @@ import {
   SideBtnWrap,
 } from "./SideBarStyles";
 
-const index = ({ isOpen, toggle }): JSX.Element => {
+type NavbarProps = {
+  isOpen: boolean;
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
+  toggle: boolean;
+};
+
+const index = ({ isOpen, toggle, setToggle }: NavbarProps): JSX.Element => {
+  const handleClickFunction = (): void => {
+    setToggle(!toggle);
+  };
+
   return (
-    <SidebarContainer isOpen={isOpen} onClick={toggle}>
-      <Icon onClick={toggle}>
+    <SidebarContainer isOpen={isOpen} onClick={handleClickFunction}>
+      <Icon onClick={handleClickFunction}>
         <CloseIcon />
       </Icon>
       <SidebarWrapper>
         <SidebarMenu>
-          <SidebarLink onClick={toggle} to="about">
+          <SidebarLink onClick={handleClickFunction} to="about">
             {" "}
             About
           </SidebarLink>
-          <SidebarLink onClick={toggle} to="discover">
+          <SidebarLink onClick={handleClickFunction} to="discover">
             {" "}
             Discover
           </SidebarLink>
-          <SidebarLink onClick={toggle} to="services">
+          <SidebarLink onClick={handleClickFunction} to="services">
             {" "}
             Services
           </SidebarLink>
-          <SidebarLink onClick={toggle} to="signup">
+          <SidebarLink onClick={handleClickFunction} to="signup">
             {" "}
             Signup{" "}
           </SidebarLink>
