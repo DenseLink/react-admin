@@ -2,8 +2,12 @@ import { Link as LinkR } from "react-router-dom";
 import { Link as LinkS } from "react-scroll";
 import styled from "styled-components";
 
-export const Nav = styled.nav`
-  background: #000;
+type NavProps = {
+  scrollNav: boolean;
+};
+
+export const Nav = styled.nav<NavProps>`
+  background: ${({ scrollNav }) => (scrollNav ? "#000" : "transparent")};
   height: 80px;
   margin-top: -80px;
   display: flex;
@@ -30,7 +34,7 @@ export const NavbarContainer = styled.div`
 `;
 
 export const NavLogo = styled(LinkR)`
-  color: red;
+  color: #fff;
   justify-self: flex-start;
   cursor: pointer;
   font-size: 1.5rem;
@@ -57,7 +61,7 @@ export const MobileIcon = styled.div`
 
 export const NavMenu = styled.ul`
   display: flex;
-  align-items: center;
+  justify-content: center;
   list-style: none;
   text-align: center;
   margin-right: -22px;

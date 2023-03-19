@@ -14,7 +14,7 @@ const Home = (): JSX.Element => {
   return (
     <>
       <Sidebar isOpen={isOpen} setToggle={setIsOpen} toggle={toggle} />
-      <Navbar setToggle={setIsOpen} toggle={toggle} />
+      <Navbar toggle={toggle} />
       <HeroSection />
     </>
   );

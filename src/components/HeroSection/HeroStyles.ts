@@ -10,7 +10,6 @@ export const HeroContainer = styled.div`
   height: 800px;
   position: relative;
   z-index: 1;
-
   :before {
     content: "";
     position: absolute;
@@ -18,6 +17,7 @@ export const HeroContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
     background: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0.2) 0%,
@@ -81,7 +81,6 @@ export const HeroP = styled.p`
   @media screen and (max-width: 768px) {
     font-size: 24px;
   }
-
   @media screen and (max-width: 480px) {
     font-size: 18px;
   }

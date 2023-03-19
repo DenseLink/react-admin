@@ -1,4 +1,7 @@
+import { useEffect, useMemo, useState } from "react";
 import { FaBars } from "react-icons/fa";
+import { IconContext } from "react-icons/lib";
+import { animateScroll as scroll } from "react-scroll";
 
 import {
   MobileIcon,
@@ -13,41 +16,66 @@ import {
 } from "./NavbarStyles";
 
 type NavbarProps = {
-  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
   toggle: () => void;
 };
+const toggleHome = (): void => {
+  scroll.scrollToTop();
+};
+const Navbar = ({ toggle }: NavbarProps): JSX.Element => {
+  const [scrollNav, setScrollNav] = useState(false);
 
-const Navbar = ({ toggle, setToggle }: NavbarProps): JSX.Element => {
-  const handleClickFunction = (): void => {
-    setToggle(!toggle);
+  const iconContextValue = useMemo(() => ({ color: "#fff" }), []);
+
+  const changeNav = (): void => {
+    if (window.scrollY >= 80) {
+      setScrollNav(true);
+    } else {
+      setScrollNav(false);
+    }
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", changeNav);
+  }, []);
+
   return (
-    <Nav>
-      <NavbarContainer>
-        <NavLogo to="/">dolla</NavLogo>
-        <MobileIcon onClick={handleClickFunction}>
-          <FaBars />
-        </MobileIcon>
-        <NavMenu>
-          <NavItem>
-            <NavLinks to="about">About</NavLinks>
-          </NavItem>
-          <NavItem>
-            <NavLinks to="discover">Discover</NavLinks>
-          </NavItem>
-          <NavItem>
-            <NavLinks to="services">Services</NavLinks>
-          </NavItem>
-          <NavItem>
-            <NavLinks to="signup">Signup</NavLinks>
-          </NavItem>
-        </NavMenu>
-        <NavBtn>
-          <NavBtnLink to="/signin"> Sign In</NavBtnLink>
-        </NavBtn>
-      </NavbarContainer>
-    </Nav>
+    <IconContext.Provider value={iconContextValue}>
+      <Nav scrollNav={scrollNav}>
+        <NavbarContainer>
+          <NavLogo onClick={toggleHome} to="/">
+            dolla
+          </NavLogo>
+          <MobileIcon onClick={toggle}>
+            <FaBars />
+          </MobileIcon>
+          <NavMenu>
+            <NavItem>
+              <NavLinks duration={500} offset={-80} to="about" smooth spy>
+                About
+              </NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks duration={500} offset={-80} to="discover" smooth spy>
+                Discover
+              </NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks duration={500} offset={-80} to="services" smooth spy>
+                Services
+              </NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks duration={500} offset={-80} to="signup" smooth spy>
+                Sign Up
+              </NavLinks>
+            </NavItem>
+          </NavMenu>
+          <NavBtn>
+            <NavBtnLink to="/signin">Sign In</NavBtnLink>
+          </NavBtn>
+        </NavbarContainer>
+      </Nav>
+    </IconContext.Provider>
   );
 };
 
