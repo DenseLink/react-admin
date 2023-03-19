@@ -14,7 +14,7 @@ import {
 
 type NavbarProps = {
   setToggle: React.Dispatch<React.SetStateAction<boolean>>;
-  toggle: boolean;
+  toggle: () => void;
 };
 
 const Navbar = ({ toggle, setToggle }: NavbarProps): JSX.Element => {

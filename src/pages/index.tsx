@@ -13,8 +13,8 @@ const Home = (): JSX.Element => {
 
   return (
     <>
-      <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Navbar toggle={toggle} />
+      <Sidebar isOpen={isOpen} setToggle={setIsOpen} toggle={toggle} />
+      <Navbar setToggle={setIsOpen} toggle={toggle} />
       <HeroSection />
     </>
   );

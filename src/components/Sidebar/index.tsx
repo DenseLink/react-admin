@@ -12,7 +12,7 @@ import {
 type NavbarProps = {
   isOpen: boolean;
   setToggle: React.Dispatch<React.SetStateAction<boolean>>;
-  toggle: boolean;
+  toggle: () => void;
 };
 
 const index = ({ isOpen, toggle, setToggle }: NavbarProps): JSX.Element => {
