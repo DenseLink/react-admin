@@ -17,7 +17,7 @@ import {
 type InfoSectionProps = {
   alt: string;
   buttonLabel: string;
-  dark: boolean | number | undefined;
+  dark?: boolean | number | undefined;
   darkText: boolean;
   description: string;
   headline: string;

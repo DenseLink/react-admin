@@ -1,7 +1,15 @@
 import { useState } from "react";
-import Navbar from "src/components/Navbar";
 
+import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection";
+import InfoSection from "../components/InfoSection";
+import {
+  homeObjOne,
+  homeObjThree,
+  homeObjTwo,
+} from "../components/InfoSection/Data";
+import Navbar from "../components/Navbar";
+import Services from "../components/Services";
 import Sidebar from "../components/Sidebar";
 
 const Home = (): JSX.Element => {
@@ -16,6 +24,11 @@ const Home = (): JSX.Element => {
       <Sidebar isOpen={isOpen} setToggle={setIsOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
       <HeroSection />
+      <InfoSection {...homeObjOne} />
+      <InfoSection {...homeObjTwo} />
+      <Services />
+      <InfoSection {...homeObjThree} />
+      <Footer />
     </>
   );
 };
