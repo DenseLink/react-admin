@@ -9,7 +9,7 @@ type Task = {
 type ColumnProps = {
   column: {
     id: string;
-    taskIds: string[];
+    taskIds: number[];
     title: string;
   };
   tasks: Task[];
