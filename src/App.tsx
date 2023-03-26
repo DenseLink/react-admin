@@ -2,6 +2,7 @@ import "./App.css";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+import KanbanBoard from "./components/KanbanBoard";
 import Home from "./pages";
 import SignIn from "./pages/signin";
 
@@ -11,6 +12,7 @@ const App = (): JSX.Element => {
       <Routes>
         <Route element={<Home />} path="/" />
         <Route element={<SignIn />} path="/signin" />
+        <Route element={<KanbanBoard />} path="/kanban" />
       </Routes>
     </Router>
   );
