@@ -3,10 +3,12 @@ import { Draggable, Droppable } from "react-beautiful-dnd";
 
 type Task = {
   content: string;
+  id: string;
 };
 
 type ColumnProps = {
   column: {
+    id: string;
     title: string;
   };
   tasks: Task[];
