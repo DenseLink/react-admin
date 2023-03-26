@@ -22,71 +22,70 @@ const reorderColumnList = (sourceCol, startIndex, endIndex) => {
   return newColumn;
 };
 
-const onDragEnd = (result: DropResult): void => {
-  const { destination, source } = result;
-  // user drops in unregulated spot
-  if (!destination) {
-    return;
-  }
-  // if user drops in same location
-  if (
-    destination.droppableId === source.droppableId &&
-    destination.index === source.index
-  ) {
-    return;
-  }
+const Header = (): JSX.Element => {
+  const [state, setState] = useState(initialData);
 
-  // If the user drops within the same column but in a different position
-  const sourceCol = state.columns[source.droppableId];
-  const destinationCol = state.columns[destination.droppableId];
+  const onDragEnd = (result: DropResult): void => {
+    const { destination, source } = result;
+    // user drops in unregulated spot
+    if (!destination) {
+      return;
+    }
+    // if user drops in same location
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
 
-  if (sourceCol.id === destinationCol.id) {
-    const newColumn = reorderColumnList(
-      sourceCol,
-      source.index,
-      destination.index
-    );
+    // If the user drops within the same column but in a different position
+    const sourceCol = state.columns[source.droppableId];
+    const destinationCol = state.columns[destination.droppableId];
+
+    if (sourceCol.id === destinationCol.id) {
+      const newColumn = reorderColumnList(
+        sourceCol,
+        source.index,
+        destination.index
+      );
+
+      const newState = {
+        ...state,
+        columns: {
+          ...state.columns,
+          [newColumn.id]: newColumn,
+        },
+      };
+      setState(newState);
+    }
+
+    // If the user moves from one column to another
+    const startTaskIds = [...sourceCol.taskIds];
+    const [removed] = startTaskIds.splice(source.index, 1);
+    const newStartCol = {
+      ...sourceCol,
+      taskIds: startTaskIds,
+    };
+
+    const endTaskIds = [...destinationCol.taskIds];
+    endTaskIds.splice(destination.index, 0, removed);
+    const newEndCol = {
+      ...destinationCol,
+      taskIds: endTaskIds,
+    };
 
     const newState = {
       ...state,
       columns: {
         ...state.columns,
-        [newColumn.id]: newColumn,
+        [newStartCol.id]: newStartCol,
+        [newEndCol.id]: newEndCol,
       },
     };
+
     setState(newState);
-    return;
-  }
-
-  // If the user moves from one column to another
-  const startTaskIds = [...sourceCol.taskIds];
-  const [removed] = startTaskIds.splice(source.index, 1);
-  const newStartCol = {
-    ...sourceCol,
-    taskIds: startTaskIds,
   };
-
-  const endTaskIds = [...destinationCol.taskIds];
-  endTaskIds.splice(destination.index, 0, removed);
-  const newEndCol = {
-    ...destinationCol,
-    taskIds: endTaskIds,
-  };
-
-  const newState = {
-    ...state,
-    columns: {
-      ...state.columns,
-      [newStartCol.id]: newStartCol,
-      [newEndCol.id]: newEndCol,
-    },
-  };
-
-  setState(newState);
-};
-
-const Header = (): JSX.Element => {
-  const [state, setState] = useState(initialData);
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
