@@ -7,21 +7,28 @@ import { initialData } from "./Data";
 
 const Column = lazy(() => import("./Column"));
 
+type ColumnType = {
+  id: string;
+  taskIds?: string[];
+  title: string;
+};
+type NewColumnType = ColumnType & {
+  taskIds: string[];
+};
+
 const reorderColumnList = (
-  sourceCol: typeof Column,
+  sourceCol: NewColumnType,
   startIndex: number,
   endIndex: number
-): typeof Column => {
-  const newTaskIds = [...(sourceCol.taskIds as string[])];
+): NewColumnType => {
+  const newTaskIds = [...sourceCol.taskIds];
   const [removed] = newTaskIds.splice(startIndex, 1);
   newTaskIds.splice(endIndex, 0, removed);
 
-  const newColumn: typeof Column = {
+  const newColumn: NewColumnType = {
     ...sourceCol,
     taskIds: newTaskIds,
   };
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return newColumn;
 };
 
