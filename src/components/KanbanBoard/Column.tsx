@@ -1,8 +1,8 @@
 import { Flex, Text } from "@chakra-ui/react";
+import { Draggable, Droppable } from "react-beautiful-dnd";
 
 type Task = {
   content: string;
-  id: string;
 };
 
 type ColumnProps = {
@@ -27,22 +27,37 @@ const Column = ({ column, tasks }: ColumnProps): JSX.Element => {
           {column.title}
         </Text>
       </Flex>
-
-      <Flex flex={1} flexDir="column" px="1.5rem">
-        {tasks.map((task) => (
+      <Droppable droppableId={column.id}>
+        {(droppableProvided, droppableSnapshot) => (
           <Flex
-            key={task.id}
-            bg="card-bg"
-            h="72px"
-            mb="1rem"
-            outline="2px solid"
-            p="1.5rem"
-            rounded="3px"
+            ref={droppableProvided.innerRef}
+            {...droppableProvided.droppableProps}
+            flex={1}
+            flexDir="column"
+            px="1.5rem"
           >
-            <Text>{task.content}</Text>
+            {tasks.map((task, index) => (
+              <Draggable key={task.id} draggableId={`${task.id}`} index={index}>
+                {(draggableProvided, draggableSnapshot) => (
+                  <Flex
+                    ref={draggableProvided.innerRef}
+                    bg="card-bg"
+                    h="72px"
+                    mb="1rem"
+                    outline="2px solid"
+                    p="1.5rem"
+                    rounded="3px"
+                    {...draggableProvided.draggableProps}
+                    {...draggableProvided.dragHandleProps}
+                  >
+                    <Text>{task.content}</Text>
+                  </Flex>
+                )}
+              </Draggable>
+            ))}
           </Flex>
-        ))}
-      </Flex>
+        )}
+      </Droppable>
     </Flex>
   );
 };

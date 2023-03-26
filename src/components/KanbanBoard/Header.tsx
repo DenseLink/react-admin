@@ -1,10 +1,11 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { lazy, useState } from "react";
 import type { DropResult } from "react-beautiful-dnd";
 import { DragDropContext } from "react-beautiful-dnd";
 
-import Column from "./Column";
 import { initialData } from "./Data";
+
+const Column = lazy(() => import("./Column"), { ssr: false });
 
 const onDragEnd = (result: DropResult): void => {
   const { destination, source } = result;
