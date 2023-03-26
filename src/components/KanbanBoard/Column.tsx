@@ -1,6 +1,18 @@
 import { Flex, Text } from "@chakra-ui/react";
 
-const Column = ({ column, tasks }): JSX.Element => {
+type Task = {
+  content: string;
+  id: string;
+};
+
+type ColumnProps = {
+  column: {
+    title: string;
+  };
+  tasks: Task[];
+};
+
+const Column = ({ column, tasks }: ColumnProps): JSX.Element => {
   return (
     <Flex bg="column-bg" flexDir="column" h="620px" rounded="3px" w="400px">
       <Flex
@@ -19,6 +31,7 @@ const Column = ({ column, tasks }): JSX.Element => {
       <Flex flex={1} flexDir="column" px="1.5rem">
         {tasks.map((task) => (
           <Flex
+            key={task.id}
             bg="card-bg"
             h="72px"
             mb="1rem"
