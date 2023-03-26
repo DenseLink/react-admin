@@ -12,7 +12,7 @@ const reorderColumnList = (
   startIndex: number,
   endIndex: number
 ): typeof Column => {
-  const newTaskIds = [...sourceCol.taskIds];
+  const newTaskIds = [...(sourceCol.taskIds as string[])];
   const [removed] = newTaskIds.splice(startIndex, 1);
   newTaskIds.splice(endIndex, 0, removed);
 
