@@ -31,9 +31,21 @@ const reorderColumnList = (
   };
   return newColumn;
 };
+type ColumnStateType = Record<
+  string,
+  {
+    id: string;
+    taskIds?: string[];
+    title: string;
+  }
+>;
 
 const Header = (): JSX.Element => {
-  const [state, setState] = useState(initialData);
+  const [state, setState] = useState<{
+    columnOrder: string[];
+    columns: ColumnStateType;
+    tasks: string;
+  }>(initialData);
 
   const onDragEnd = (result: DropResult): void => {
     const { destination, source } = result;
