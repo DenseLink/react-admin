@@ -58,6 +58,7 @@ const Header = (): JSX.Element => {
         },
       };
       setState(newState);
+      return;
     }
 
     // If the user moves from one column to another

@@ -30,7 +30,7 @@ const Column = ({ column, tasks }: ColumnProps): JSX.Element => {
         </Text>
       </Flex>
       <Droppable droppableId={column.id}>
-        {(droppableProvided, droppableSnapshot) => (
+        {(droppableProvided) => (
           <Flex
             ref={droppableProvided.innerRef}
             {...droppableProvided.droppableProps}
@@ -51,6 +51,16 @@ const Column = ({ column, tasks }: ColumnProps): JSX.Element => {
                     rounded="3px"
                     {...draggableProvided.draggableProps}
                     {...draggableProvided.dragHandleProps}
+                    boxShadow={
+                      draggableSnapshot.isDragging
+                        ? "0 5px 10px rgba(0, 0, 0, 0.6)"
+                        : "unset"
+                    }
+                    outlineColor={
+                      draggableSnapshot.isDragging
+                        ? "card-border"
+                        : "transparent"
+                    }
                   >
                     <Text>{task.content}</Text>
                   </Flex>
