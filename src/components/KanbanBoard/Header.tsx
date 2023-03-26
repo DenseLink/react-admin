@@ -7,13 +7,16 @@ import { initialData } from "./Data";
 
 const Column = lazy(() => import("./Column"));
 
-const reorderColumnList = (sourceCol, startIndex, endIndex) => {
+const reorderColumnList = (
+  sourceCol: typeof Column,
+  startIndex: number,
+  endIndex: number
+): typeof Column => {
   const newTaskIds = [...sourceCol.taskIds];
   const [removed] = newTaskIds.splice(startIndex, 1);
   newTaskIds.splice(endIndex, 0, removed);
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, sonarjs/prefer-immediate-return
-  const newColumn = {
+  const newColumn: typeof Column = {
     ...sourceCol,
     taskIds: newTaskIds,
   };
