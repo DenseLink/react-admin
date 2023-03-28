@@ -9,33 +9,31 @@ const Column = lazy(() => import("./Column"));
 
 type ColumnType = {
   id: string;
-  taskIds?: string[];
+  taskIds: number[];
   title: string;
-};
-type NewColumnType = ColumnType & {
-  taskIds: string[];
 };
 
 const reorderColumnList = (
-  sourceCol: NewColumnType,
+  sourceCol: ColumnType,
   startIndex: number,
   endIndex: number
-): NewColumnType => {
+): ColumnType => {
   const newTaskIds = [...sourceCol.taskIds];
   const [removed] = newTaskIds.splice(startIndex, 1);
   newTaskIds.splice(endIndex, 0, removed);
 
-  const newColumn: NewColumnType = {
+  const newColumn: ColumnType = {
     ...sourceCol,
     taskIds: newTaskIds,
   };
   return newColumn;
 };
+
 type ColumnStateType = Record<
   string,
   {
     id: string;
-    taskIds?: string[];
+    taskIds: number[];
     title: string;
   }
 >;
@@ -44,7 +42,7 @@ const Header = (): JSX.Element => {
   const [state, setState] = useState<{
     columnOrder: string[];
     columns: ColumnStateType;
-    tasks: string;
+    tasks: Record<number, { content: string; id: number }>;
   }>(initialData);
 
   const onDragEnd = (result: DropResult): void => {
@@ -72,14 +70,14 @@ const Header = (): JSX.Element => {
         destination.index
       );
 
-      const newState = {
+      const updatedState = {
         ...state,
         columns: {
           ...state.columns,
           [newColumn.id]: newColumn,
         },
       };
-      setState(newState);
+      setState(updatedState);
       return;
     }
 

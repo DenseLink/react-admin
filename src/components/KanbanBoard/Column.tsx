@@ -1,9 +1,9 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 
-type Task = {
+export type Task = {
   content: string;
-  id: string;
+  id: number;
 };
 
 type ColumnProps = {
