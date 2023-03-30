@@ -2,9 +2,7 @@ import { Link as LinkR } from "react-router-dom";
 import { Link as LinkS } from "react-scroll";
 import styled from "styled-components";
 
-type NavProps = {
-  scrollNav: boolean;
-};
+import type { NavProps } from "./NavbarTypes";
 
 export const Nav = styled.nav<NavProps>`
   background: ${({ scrollNav }) => (scrollNav ? "#000" : "transparent")};
