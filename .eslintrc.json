@@ -162,7 +162,7 @@
       }
     ]
   },
-  "ignorePatterns": "src/App.js",
+  "ignorePatterns": ["src/App.js", "src/index.js"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": ["tsconfig.json"]
