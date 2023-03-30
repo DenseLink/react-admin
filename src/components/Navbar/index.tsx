@@ -14,10 +14,8 @@ import {
   NavLogo,
   NavMenu,
 } from "./NavbarStyles";
+import type { NavbarProps } from "./NavbarTypes";
 
-type NavbarProps = {
-  toggle: () => void;
-};
 const toggleHome = (): void => {
   scroll.scrollToTop();
 };
@@ -43,7 +41,7 @@ const Navbar = ({ toggle }: NavbarProps): JSX.Element => {
       <Nav scrollNav={scrollNav}>
         <NavbarContainer>
           <NavLogo onClick={toggleHome} to="/">
-            dolla
+            InkTrail
           </NavLogo>
           <MobileIcon onClick={toggle}>
             <FaBars />
