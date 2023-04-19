@@ -1,15 +1,25 @@
+import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
-const ScrollToTop = (): null => {
-  const { pathname } = useLocation();
+function ScrollToTop({ pageProps }: AppProps) {
+  const router = useRouter();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    const handleRouteChange = () => {
+      window.scrollTo(0 as number, 0 as number);
+    };
 
-  // eslint-disable-next-line unicorn/no-null
-  return null;
-};
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
+  return () => {
+    pageProps;
+  };
+}
 
 export default ScrollToTop;

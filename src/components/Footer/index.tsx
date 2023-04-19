@@ -35,41 +35,41 @@ const Footer = (): JSX.Element => {
           <FooterLinkWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>About us</FooterLinkTitle>
-              <FooterLink to="/">How it works</FooterLink>
-              <FooterLink to="/">Testimonials</FooterLink>
-              <FooterLink to="/">Carrers</FooterLink>
-              <FooterLink to="/">Investor</FooterLink>
-              <FooterLink to="/">Terms of Service</FooterLink>
+              <FooterLink href="/">How it works</FooterLink>
+              <FooterLink href="/">Testimonials</FooterLink>
+              <FooterLink href="/">Carrers</FooterLink>
+              <FooterLink href="/">Investor</FooterLink>
+              <FooterLink href="/">Terms of Service</FooterLink>
             </FooterLinkItems>
             <FooterLinkItems>
               <FooterLinkTitle>Contact Us</FooterLinkTitle>
-              <FooterLink to="/">Contact</FooterLink>
-              <FooterLink to="/">Support</FooterLink>
-              <FooterLink to="/">Destinations</FooterLink>
-              <FooterLink to="/">Sponsorships</FooterLink>
+              <FooterLink href="/">Contact</FooterLink>
+              <FooterLink href="/">Support</FooterLink>
+              <FooterLink href="/">Destinations</FooterLink>
+              <FooterLink href="/">Sponsorships</FooterLink>
             </FooterLinkItems>
           </FooterLinkWrapper>
 
           <FooterLinkWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>Videos</FooterLinkTitle>
-              <FooterLink to="/">Submit Video</FooterLink>
-              <FooterLink to="/">Ambassadors</FooterLink>
-              <FooterLink to="/">Agency</FooterLink>
-              <FooterLink to="/">Influencer</FooterLink>
+              <FooterLink href="/">Submit Video</FooterLink>
+              <FooterLink href="/">Ambassadors</FooterLink>
+              <FooterLink href="/">Agency</FooterLink>
+              <FooterLink href="/">Influencer</FooterLink>
             </FooterLinkItems>
             <FooterLinkItems>
               <FooterLinkTitle>Social Media</FooterLinkTitle>
-              <FooterLink to="/">Instagram</FooterLink>
-              <FooterLink to="/">Facebook</FooterLink>
-              <FooterLink to="/">Youtube</FooterLink>
-              <FooterLink to="/">Twitter</FooterLink>
+              <FooterLink href="/">Instagram</FooterLink>
+              <FooterLink href="/">Facebook</FooterLink>
+              <FooterLink href="/">Youtube</FooterLink>
+              <FooterLink href="/">Twitter</FooterLink>
             </FooterLinkItems>
           </FooterLinkWrapper>
         </FooterLinkContainer>
         <SocialMedia>
           <SocialMediaWrap>
-            <SocialLogo onClick={toggleHome} to="/">
+            <SocialLogo href="/" onClick={toggleHome}>
               dolla
             </SocialLogo>
             <WebsiteRights>

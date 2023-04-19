@@ -1,5 +1,3 @@
-import type { Size } from "components/system/Window/RndWindow/useResizable";
-import type { ClockSource, WallpaperFit } from "contexts/session/types";
 import type { AsyncZipOptions } from "fflate";
 import type { ThemeName } from "styles/themes";
 
@@ -25,24 +23,15 @@ export const DEFAULT_LOCALE = "en";
 
 export const DEFAULT_ASCENDING = true;
 
-export const DEFAULT_CLOCK_SOURCE: ClockSource = "local";
-
 export const DEFAULT_THEME: ThemeName = "defaultTheme";
 
 export const DEFAULT_WALLPAPER = "VANTA";
-
-export const DEFAULT_WALLPAPER_FIT: WallpaperFit = "fill";
 
 export const THIN_SCROLLBAR_WIDTH = 13;
 
 export const BASE_CLOCK_WIDTH = 68;
 
 export const SMALLEST_PNG_SIZE = 51;
-
-export const DEFAULT_WINDOW_SIZE: Size = {
-  height: 300,
-  width: 405,
-};
 
 export const DEFAULT_MAPPED_NAME = "Share";
 

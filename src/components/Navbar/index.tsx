@@ -40,7 +40,7 @@ const Navbar = ({ toggle }: NavbarProps): JSX.Element => {
     <IconContext.Provider value={iconContextValue}>
       <Nav scrollNav={scrollNav}>
         <NavbarContainer>
-          <NavLogo onClick={toggleHome} to="/">
+          <NavLogo href="/" onClick={toggleHome}>
             InkTrail
           </NavLogo>
           <MobileIcon onClick={toggle}>
@@ -69,7 +69,7 @@ const Navbar = ({ toggle }: NavbarProps): JSX.Element => {
             </NavItem>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink to="/signin">Sign In</NavBtnLink>
+            <NavBtnLink href="/signin">Sign In</NavBtnLink>
           </NavBtn>
         </NavbarContainer>
       </Nav>
