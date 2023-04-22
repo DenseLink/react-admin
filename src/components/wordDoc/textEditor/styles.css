@@ -1,0 +1,15 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container .__next {
+  width: 8.5in;
+  min-height: 11in;
+  padding: 1in;
+}
