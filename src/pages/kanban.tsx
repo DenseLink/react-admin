@@ -1,9 +1,14 @@
-import dynamic from "next/dynamic";
+import { ChakraProvider } from "@chakra-ui/react";
 
-const Kanbanboard = dynamic(() => import("../components/KanbanBoard"));
+import Header from "../components/KanbanBoard/Header";
+import theme from "../components/KanbanBoard/theme";
 
-const kanban = (): JSX.Element => {
-  return <Kanbanboard />;
+const index = (): JSX.Element => {
+  return (
+    <ChakraProvider theme={theme}>
+      <Header />
+    </ChakraProvider>
+  );
 };
 
-export default kanban;
+export default index;
