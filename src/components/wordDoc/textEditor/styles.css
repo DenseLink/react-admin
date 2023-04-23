@@ -4,12 +4,12 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
+.body {
+  margin: 50;
 }
 
-.container .__next {
-  width: 8.5in;
-  min-height: 11in;
+.container .quill {
+  width: 4.5in;
+  height: 400in;
   padding: 1in;
 }
