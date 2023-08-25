@@ -7,14 +7,11 @@
     "type": "git"
   },
   "scripts": {
-    "build": "yarn build:prebuild && next build",
+    "build": "next build",
     "build:bundle-analyzer": "yarn build",
-    "build:fs": "node scripts/fs2json.js --exclude .index --out public/.index/fs.9p.json ./public && node scripts/preloadIcons.js",
     "build:html": "node scripts/minifyHtml.js",
     "build:js": "node scripts/minifyJs.js",
-    "build:prebuild": "yarn build:fs && yarn build:search",
     "build:robots": "node scripts/robots.js",
-    "build:search": "node scripts/searchIndex.js",
     "deploy": "yarn build:robots && next export && yarn build:html && yarn build:js",
     "docker:build": "docker build -t daedalos .",
     "docker:run": "docker run -dp 3000:3000 --rm --name daedalos daedalos",
@@ -33,7 +30,7 @@
     "*.{js,ts,tsx}": "eslint --fix"
   },
   "engines": {
-    "node": ">=16 <=18"
+    "node": "^16"
   },
   "resolutions": {
     "styled-components": "^5"
@@ -90,6 +87,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "7z-wasm": "^1.0.1",
     "@next/bundle-analyzer": "^13.1.6",
     "@next/eslint-plugin-next": "^13.1.6",
     "@types/gif.js": "^0.2.2",
@@ -108,7 +106,6 @@
     "@types/wicg-file-system-access": "^2020.9.5",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
-    "7z-wasm": "^1.0.1",
     "browserfs": "https://github.com/jvilk/BrowserFS.git",
     "emulators": "^0.73.8",
     "emulators-ui": "^0.73.9",
@@ -135,7 +132,6 @@
     "lint-staged": "^13.1.1",
     "lunr": "^2.3.9",
     "monaco-editor": "^0.35.0",
-    "pdfjs-dist": "^3.3.122",
     "postcss-styled-syntax": "^0.3.1",
     "postcss-syntax": "^0.36.2",
     "stylelint": "^15.0.0",
