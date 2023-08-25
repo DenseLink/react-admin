@@ -1,19 +1,19 @@
 import "./App.css";
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
-import KanbanBoard from "./components/KanbanBoard";
+import KanbanBoard from "./components/KanbanBoard/Column";
 import Home from "./pages";
 import SignIn from "./pages/signin";
 
 const App = (): JSX.Element => {
   return (
     <Router>
-      <Routes>
-        <Route element={<Home />} path="/" />
-        <Route element={<SignIn />} path="/signin" />
-        <Route element={<KanbanBoard />} path="/kanban" />
-      </Routes>
+      <Switch>
+        <Route component={Home} path="/" />
+        <Route component={SignIn} path="/signin" />
+        <Route component={KanbanBoard} path="/kanban" />
+      </Switch>
     </Router>
   );
 };
