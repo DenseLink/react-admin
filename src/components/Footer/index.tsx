@@ -1,10 +1,4 @@
-import {
-  FaFacebook,
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { animateScroll as scroll } from "react-scroll";
 
 import {
@@ -34,74 +28,59 @@ const Footer = (): JSX.Element => {
         <FooterLinkContainer>
           <FooterLinkWrapper>
             <FooterLinkItems>
-              <FooterLinkTitle>About us</FooterLinkTitle>
-              <FooterLink href="/">How it works</FooterLink>
-              <FooterLink href="/">Testimonials</FooterLink>
-              <FooterLink href="/">Carrers</FooterLink>
-              <FooterLink href="/">Investor</FooterLink>
-              <FooterLink href="/">Terms of Service</FooterLink>
-            </FooterLinkItems>
-            <FooterLinkItems>
-              <FooterLinkTitle>Contact Us</FooterLinkTitle>
-              <FooterLink href="/">Contact</FooterLink>
-              <FooterLink href="/">Support</FooterLink>
-              <FooterLink href="/">Destinations</FooterLink>
-              <FooterLink href="/">Sponsorships</FooterLink>
-            </FooterLinkItems>
-          </FooterLinkWrapper>
-
-          <FooterLinkWrapper>
-            <FooterLinkItems>
-              <FooterLinkTitle>Videos</FooterLinkTitle>
-              <FooterLink href="/">Submit Video</FooterLink>
-              <FooterLink href="/">Ambassadors</FooterLink>
-              <FooterLink href="/">Agency</FooterLink>
-              <FooterLink href="/">Influencer</FooterLink>
-            </FooterLinkItems>
-            <FooterLinkItems>
               <FooterLinkTitle>Social Media</FooterLinkTitle>
-              <FooterLink href="/">Instagram</FooterLink>
-              <FooterLink href="/">Facebook</FooterLink>
-              <FooterLink href="/">Youtube</FooterLink>
-              <FooterLink href="/">Twitter</FooterLink>
+              <FooterLink href="https://www.instagram.com/denselink/">
+                Instagram
+              </FooterLink>
+              <FooterLink href="https://www.linkedin.com/in/gary-jones-4483b8b2/">
+                LinkedIn
+              </FooterLink>
+              <FooterLink href="https://twitter.com/DenseLink">
+                Twitter
+              </FooterLink>
+              <FooterLink href="https://github.com/DenseLink">
+                Github
+              </FooterLink>
             </FooterLinkItems>
           </FooterLinkWrapper>
         </FooterLinkContainer>
         <SocialMedia>
           <SocialMediaWrap>
             <SocialLogo href="/" onClick={toggleHome}>
-              dolla
+              Gary Jones
             </SocialLogo>
             <WebsiteRights>
-              dolla © {new Date().getFullYear()} All rights reserved.
+              Gary Jones © {new Date().getFullYear()} All rights reserved.
             </WebsiteRights>
             <SocialIcons>
-              <SocialIconLink arial-label="Facebook" href="/" target="_blank">
-                <FaFacebook />
-              </SocialIconLink>
               <SocialIconLink
                 arial-label="Instagram"
-                href="//www.instagram.com/leonardtcomdt/"
+                href="https://www.instagram.com/denselink/"
                 target="_blank"
               >
                 <FaInstagram />
               </SocialIconLink>
+
               <SocialIconLink
-                arial-label="Youtube"
-                href="//www.youtube.com/channel/UCF6Cz50AqAJcg6JC5LDRElg/videos?view_as=subscriber"
+                arial-label="Twitter"
+                href="https://twitter.com/DenseLink"
                 target="_blank"
               >
-                <FaYoutube />
-              </SocialIconLink>
-              <SocialIconLink arial-label="Twitter" href="/" target="_blank">
                 <FaTwitter />
               </SocialIconLink>
               <SocialIconLink
                 arial-label="Linkedin"
-                href="//www.linkedin.com/in/leonardtlauenstein/"
+                href="https://www.linkedin.com/in/gary-jones-4483b8b2/"
                 target="_blank"
               >
                 <FaLinkedin />
+              </SocialIconLink>
+              <SocialIconLink
+                arial-label="Github"
+                href="https://github.com/DenseLink"
+                target="_blank"
+              >
+                <FaGithub />
               </SocialIconLink>
             </SocialIcons>
           </SocialMediaWrap>

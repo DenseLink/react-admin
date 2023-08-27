@@ -20,27 +20,48 @@ type IconProps = React.SVGProps<SVGSVGElement> & {
 const Services = (): JSX.Element => {
   return (
     <ServicesContainer id="services">
-      <ServicesH1>Our services</ServicesH1>
+      <ServicesH1>Portfolio</ServicesH1>
       <ServicesWrapper>
         <ServicesCard>
           <ServicesIcon src={Icon2 as IconProps["src"]} />
-          <ServicesH2>Reduce expenses</ServicesH2>
-          <ServicesP>
-            We help your fess and increase your overall revenue.
-          </ServicesP>
+          <ServicesH2>Portfolio Website</ServicesH2>
+          <ServicesP>Look at the code I used to create this website</ServicesP>
         </ServicesCard>
         <ServicesCard>
           <ServicesIcon src={Icon1 as IconProps["src"]} />
-          <ServicesH2>Virtual Offices</ServicesH2>
+          <ServicesH2>Covid On Flight</ServicesH2>
           <ServicesP>
-            you can acess our plataform online anywhere in the world.
+            Covid on Flight is the front end aspect of a website designed to
+            track potential COVID-19 infections during to airline travel
           </ServicesP>
         </ServicesCard>
         <ServicesCard>
           <ServicesIcon src={Icon3 as IconProps["src"]} />
-          <ServicesH2>Reduce expenses</ServicesH2>
+          <ServicesH2>AI Tic-Tac-Toe</ServicesH2>
           <ServicesP>
-            Unlock our special membership card that returns 5% cash back.
+            Initialize this project and play Tic-Tac-Toe against an AI. See how
+            well you do!
+          </ServicesP>
+        </ServicesCard>
+        <ServicesCard>
+          <ServicesIcon src={Icon3 as IconProps["src"]} />
+          <ServicesH2>MineSweeper</ServicesH2>
+          <ServicesP>
+            Initialize this project and play a game of Minesweeper set up in C++
+          </ServicesP>
+        </ServicesCard>
+        <ServicesCard>
+          <ServicesIcon src={Icon3 as IconProps["src"]} />
+          <ServicesH2>Image Processor</ServicesH2>
+          <ServicesP>
+            Upload Images into the project and watch how they combine.
+          </ServicesP>
+        </ServicesCard>
+        <ServicesCard>
+          <ServicesIcon src={Icon3 as IconProps["src"]} />
+          <ServicesH2>Fractal</ServicesH2>
+          <ServicesP>
+            Initialize this project and interact with Fractals through the GUI
           </ServicesP>
         </ServicesCard>
       </ServicesWrapper>

@@ -44,8 +44,7 @@ export const homeObjThree = {
   darkText: true,
   description: "B.S. Computer Science, May 2022",
   description2: "M.S. Microbiology and Cell Science, August 2017",
-  description3:
-    "Bachelor of Science in Microbiology and Cell Science, June 2016",
+  description3: "B.S. Microbiology and Cell Science, June 2016",
   headline: "My Academic Journey",
   id: "signup",
   img: "/images/svg-3.svg",
