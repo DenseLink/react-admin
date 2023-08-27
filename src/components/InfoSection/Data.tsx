@@ -1,11 +1,13 @@
 export const homeObjOne = {
   alt: "car",
-  buttonLabel: "Get started",
+  buttonLabel: "sssGet started",
   dark: true,
   darkText: false,
   description:
-    "Get access to our exclusive app that allows you to send unlimited transactions whitout getting charged any fees.",
-  headline: "Unlimited Transactions with zero fees",
+    "I spend my time working out, being outdoors and working on personal projects ",
+  description2: "",
+  description3: "",
+  headline: "Adventurous and always looking to expand my skillset",
   id: "about",
   img: "/images/svg-1.svg",
   imgStart: false,
@@ -13,7 +15,7 @@ export const homeObjOne = {
   lightText: true,
   lighttextDesc: true,
   primary: true,
-  topLine: "Premium Bank",
+  topLine: "About Me",
 };
 
 export const homeObjTwo = {
@@ -22,8 +24,10 @@ export const homeObjTwo = {
   dark: false,
   darkText: true,
   description:
-    "Gedt access to our exclusive app that allows you to send unlimited transactions whitout getting charged any fees.",
-  headline: "Login to your account at any time",
+    "Handling data. Performing Root Cause Analysis. Tracking Trends and communicating with clients",
+  description2: "",
+  description3: "",
+  headline: "Scientist with 6+ years of experience",
   id: "discover",
   img: "/images/svg-4.svg",
   imgStart: true,
@@ -31,16 +35,18 @@ export const homeObjTwo = {
   lightText: false,
   lighttextDesc: false,
   primary: false,
-  topLine: "Unlimited Access",
+  topLine: "Skills",
 };
 
 export const homeObjThree = {
   alt: "car",
   buttonLabel: "Start Now",
   darkText: true,
-  description:
-    "Get access tdo our exclusive app that allows you to send unlimited transactions whitout getting charged any fees.",
-  headline: "Creating an account is extremely easy",
+  description: "B.S. Computer Science, May 2022",
+  description2: "M.S. Microbiology and Cell Science, August 2017",
+  description3:
+    "Bachelor of Science in Microbiology and Cell Science, June 2016",
+  headline: "My Academic Journey",
   id: "signup",
   img: "/images/svg-3.svg",
   imgStart: false,
@@ -48,5 +54,5 @@ export const homeObjThree = {
   lightText: false,
   lighttextDesc: false,
   primary: false,
-  topLine: "Premium Bank",
+  topLine: "Education",
 };

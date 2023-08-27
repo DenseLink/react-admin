@@ -1,12 +1,8 @@
 import { useState } from "react";
 
 import video from "../../videos/video.mp4";
-import { Button } from "../ButtonStyle";
 import {
-  ArrowForward,
-  ArrowRight,
   HeroBg,
-  HeroBtnWrapper,
   HeroContainer,
   HeroContent,
   HeroH1,
@@ -29,22 +25,25 @@ const HeroSection = (): JSX.Element => {
         </VideoBg>
       </HeroBg>
       <HeroContent>
-        <HeroH1> Writing has never been easier </HeroH1>
-        <HeroP>Sign up now and receive 7 days free</HeroP>
-        <HeroBtnWrapper>
-          <Button
-            onMouseEnter={onHover}
-            onMouseLeave={onHover}
-            to="signup"
-            dark
-            primary
-          >
-            Get Started {hover ? <ArrowForward /> : <ArrowRight />}
-          </Button>
-        </HeroBtnWrapper>
+        <HeroH1> Scientist and Coder </HeroH1>
+        <HeroP>Explore this page to find out more </HeroP>
       </HeroContent>
     </HeroContainer>
   );
 };
 
 export default HeroSection;
+/*goes between HeroContent
+<HeroBtnWrapper>
+          <Button
+            onMouseEnter={onHover}
+            onMouseLeave={onHover}
+            to="about"
+            dark
+            primary
+          >
+            About Me {hover ? <ArrowForward /> : <ArrowRight />}
+          </Button>
+        </HeroBtnWrapper>
+
+*/

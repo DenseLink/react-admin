@@ -1,6 +1,4 @@
-import { Button } from "../ButtonStyle";
 import {
-  BtnWrap,
   Column1,
   Column2,
   Heading,
@@ -20,6 +18,8 @@ type InfoSectionProps = {
   dark?: boolean | number | undefined;
   darkText: boolean;
   description: string;
+  description2: string;
+  description3: string;
   headline: string;
   id: string;
   img: string;
@@ -39,6 +39,8 @@ const InfoSection = ({
   headline,
   darkText,
   description,
+  description2,
+  description3,
   buttonLabel,
   alt,
   img,
@@ -54,19 +56,8 @@ const InfoSection = ({
               <TopLine>{topLine}</TopLine>
               <Heading lightText={lightText}>{headline}</Heading>
               <Subtitle darkText={darkText}>{description}</Subtitle>
-              <BtnWrap>
-                <Button
-                  dark={dark ? 1 : 0}
-                  duration={500}
-                  offset={-80}
-                  primary={primary ? 1 : 0}
-                  to="home"
-                  smooth
-                  spy
-                >
-                  {buttonLabel}
-                </Button>
-              </BtnWrap>
+              <Subtitle darkText={darkText}>{description2}</Subtitle>
+              <Subtitle darkText={darkText}>{description3}</Subtitle>
             </TextWrapper>
           </Column1>
           <Column2>
@@ -81,3 +72,20 @@ const InfoSection = ({
 };
 
 export default InfoSection;
+/* goes between TextWrapper
+
+<BtnWrap>
+                <Button
+                  dark={dark ? 1 : 0}
+                  duration={500}
+                  offset={-80}
+                  primary={primary ? 1 : 0}
+                  to="home"
+                  smooth
+                  spy
+                >
+                  {buttonLabel}
+                </Button>
+              </BtnWrap>
+
+              */

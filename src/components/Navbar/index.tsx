@@ -7,8 +7,6 @@ import {
   MobileIcon,
   Nav,
   NavbarContainer,
-  NavBtn,
-  NavBtnLink,
   NavItem,
   NavLinks,
   NavLogo,
@@ -41,7 +39,7 @@ const Navbar = ({ toggle }: NavbarProps): JSX.Element => {
       <Nav scrollNav={scrollNav}>
         <NavbarContainer>
           <NavLogo href="/" onClick={toggleHome}>
-            InkTrail
+            Gary Jones
           </NavLogo>
           <MobileIcon onClick={toggle}>
             <FaBars />
@@ -54,23 +52,20 @@ const Navbar = ({ toggle }: NavbarProps): JSX.Element => {
             </NavItem>
             <NavItem>
               <NavLinks duration={500} offset={-80} to="discover" smooth spy>
-                Discover
+                Skills
               </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks duration={500} offset={-80} to="services" smooth spy>
-                Services
+                Portfolio
               </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks duration={500} offset={-80} to="signup" smooth spy>
-                Sign Up
+                Education
               </NavLinks>
             </NavItem>
           </NavMenu>
-          <NavBtn>
-            <NavBtnLink href="/signin">Sign In</NavBtnLink>
-          </NavBtn>
         </NavbarContainer>
       </Nav>
     </IconContext.Provider>
@@ -78,3 +73,8 @@ const Navbar = ({ toggle }: NavbarProps): JSX.Element => {
 };
 
 export default Navbar;
+/* can be put anywhere inside NavbarContainer
+<NavBtn>
+            <NavBtnLink href="/signin">Sign In</NavBtnLink>
+          </NavBtn>
+          */

@@ -23,14 +23,14 @@ const Services = (): JSX.Element => {
       <ServicesH1>Our services</ServicesH1>
       <ServicesWrapper>
         <ServicesCard>
-          <ServicesIcon src={Icon1 as IconProps["src"]} />
+          <ServicesIcon src={Icon2 as IconProps["src"]} />
           <ServicesH2>Reduce expenses</ServicesH2>
           <ServicesP>
             We help your fess and increase your overall revenue.
           </ServicesP>
         </ServicesCard>
         <ServicesCard>
-          <ServicesIcon src={Icon2 as IconProps["src"]} />
+          <ServicesIcon src={Icon1 as IconProps["src"]} />
           <ServicesH2>Virtual Offices</ServicesH2>
           <ServicesP>
             you can acess our plataform online anywhere in the world.
