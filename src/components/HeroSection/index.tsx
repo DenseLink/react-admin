@@ -25,7 +25,7 @@ const HeroSection = (): JSX.Element => {
         </VideoBg>
       </HeroBg>
       <HeroContent>
-        <HeroH1> Scientist and Coder </HeroH1>
+        <HeroH1> Gene Therapy and Computer Scientist </HeroH1>
         <HeroP>Explore this page to find out more </HeroP>
       </HeroContent>
     </HeroContainer>
