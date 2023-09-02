@@ -185,7 +185,7 @@ const InfoSection = ({
               {buttonPresent && (
                 <BtnWrap>
                   <a
-                    href="https://github.com/DenseLink/minesweeper"
+                    href="https://github.com/DenseLink/Project-3-Minesweeper/tree/main"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
