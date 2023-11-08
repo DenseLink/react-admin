@@ -33,15 +33,15 @@ const index = ({ isOpen, toggle, setToggle }: NavbarProps): JSX.Element => {
           </SidebarLink>
           <SidebarLink onClick={handleClickFunction} to="discover">
             {" "}
-            Discover
+            Skills
           </SidebarLink>
           <SidebarLink onClick={handleClickFunction} to="services">
             {" "}
-            Services
+            Portfolio
           </SidebarLink>
           <SidebarLink onClick={handleClickFunction} to="signup">
             {" "}
-            Signup{" "}
+            Education{" "}
           </SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>
