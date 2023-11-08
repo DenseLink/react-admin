@@ -90,7 +90,7 @@ export const homeObjFour = {
   buttonLabel2: "Tracks potential COVID-19 infections during flight",
   buttonLabel3: "Play Tic-Tac-Toe against an AI!",
   buttonLabel4: "Play a game of Minesweeper set up in C++",
-  buttonLabel5: "Upload Images into the project and watch how they combine.",
+  buttonLabel5: "Upload Images and watch how they combine.",
   buttonLabel6: "Interact with Fractals through the GUI",
   dark: true,
   darkText: false,
