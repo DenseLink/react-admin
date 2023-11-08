@@ -86,12 +86,12 @@ export const homeObjThree = {
 
 export const homeObjFour = {
   alt: "car",
-  buttonLabel: "Look at the code I used to create this website",
-  buttonLabel2: "Tracks potential COVID-19 infections during flight",
-  buttonLabel3: "Play Tic-Tac-Toe against an AI!",
-  buttonLabel4: "Play a game of Minesweeper set up in C++",
-  buttonLabel5: "Upload Images and watch how they combine.",
-  buttonLabel6: "Interact with Fractals through the GUI",
+  buttonLabel: "This websites code",
+  buttonLabel2: "Tracks COVID-19 infections during flight",
+  buttonLabel3: "Tic-Tac-Toe against AI!",
+  buttonLabel4: "Minesweeper in C++",
+  buttonLabel5: "Photoshop in C++",
+  buttonLabel6: "Fractal GUI",
   dark: true,
   darkText: false,
   description: "",
