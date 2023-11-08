@@ -86,9 +86,9 @@ export const homeObjThree = {
 
 export const homeObjFour = {
   alt: "car",
-  buttonLabel: "This websites code",
-  buttonLabel2: "Tracks COVID-19 in air",
-  buttonLabel3: "Tic-Tac-Toe against AI!",
+  buttonLabel: "Websites code",
+  buttonLabel2: "Track COVID-19",
+  buttonLabel3: "AI Game!",
   buttonLabel4: "Minesweeper in C++",
   buttonLabel5: "Photoshop in C++",
   buttonLabel6: "Fractal GUI",
